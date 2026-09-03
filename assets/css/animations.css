@@ -1,0 +1,505 @@
+/* ==========================================================================
+   NM BAKERY — animations.css
+   Hero scroll choreography, reveal system, keyframes
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Reveal-on-scroll system
+   Elements carry [data-reveal]; JS adds .is-revealed via IntersectionObserver.
+   -------------------------------------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity .95s var(--ease-out),
+    transform 1.05s var(--ease-out),
+    clip-path 1.05s var(--ease-out),
+    filter .95s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal="up"]     { transform: translate3d(0, 42px, 0); }
+[data-reveal="down"]   { transform: translate3d(0, -34px, 0); }
+[data-reveal="left"]   { transform: translate3d(-48px, 0, 0); }
+[data-reveal="right"]  { transform: translate3d(48px, 0, 0); }
+[data-reveal="scale"]  { transform: scale(.9); }
+[data-reveal="zoom"]   { transform: scale(1.12); filter: blur(6px); }
+[data-reveal="rise"]   { transform: translate3d(0, 70px, 0) scale(.97); }
+[data-reveal="mask"]   { clip-path: inset(0 0 100% 0); transform: translate3d(0, 24px, 0); }
+[data-reveal="blur"]   { filter: blur(12px); transform: translate3d(0, 20px, 0); }
+[data-reveal="fade"]   { transform: none; }
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Staggered children */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: opacity .85s var(--ease-out), transform .95s var(--ease-out);
+}
+[data-stagger].is-revealed > * { opacity: 1; transform: none; }
+[data-stagger].is-revealed > *:nth-child(1) { transition-delay: .04s; }
+[data-stagger].is-revealed > *:nth-child(2) { transition-delay: .12s; }
+[data-stagger].is-revealed > *:nth-child(3) { transition-delay: .20s; }
+[data-stagger].is-revealed > *:nth-child(4) { transition-delay: .28s; }
+[data-stagger].is-revealed > *:nth-child(5) { transition-delay: .36s; }
+[data-stagger].is-revealed > *:nth-child(6) { transition-delay: .44s; }
+[data-stagger].is-revealed > *:nth-child(7) { transition-delay: .52s; }
+[data-stagger].is-revealed > *:nth-child(8) { transition-delay: .60s; }
+[data-stagger].is-revealed > *:nth-child(n+9) { transition-delay: .66s; }
+
+/* Line-by-line headline reveal (JS wraps each line in .line > .line__inner) */
+.line { display: block; overflow: hidden; }
+.line__inner {
+  display: block;
+  transform: translate3d(0, 105%, 0) rotate(2.5deg);
+  transform-origin: 0 100%;
+  transition: transform 1.1s var(--ease-out);
+  transition-delay: calc(var(--line-index, 0) * 110ms + var(--line-base, 0ms));
+}
+.is-revealed .line__inner,
+.hero.is-ready .line__inner { transform: none; }
+
+/* --------------------------------------------------------------------------
+   2. HERO — scroll-driven choreography
+   JS writes --scroll (0 → 1) on .hero as it leaves the viewport.
+   -------------------------------------------------------------------------- */
+.hero {
+  --scroll: 0;
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-h) + 2rem);
+  padding-bottom: 7.5rem;   /* leaves clear space for the scroll cue */
+  overflow: hidden;
+  isolation: isolate;
+  /* Deep, spotlit stage — the single biggest lever on how premium the
+     page reads in the first second. */
+  color: var(--cream);
+  background:
+    radial-gradient(90% 75% at 74% 30%, rgba(201, 162, 39, .20) 0%, transparent 58%),
+    radial-gradient(70% 60% at 12% 82%, rgba(122, 31, 53, .28) 0%, transparent 62%),
+    linear-gradient(165deg, #251409 0%, var(--espresso) 46%, var(--noir) 100%);
+}
+.hero h1 { color: var(--cream); }
+
+/* Backdrop layers — each drifts at its own rate */
+.hero__backdrop {
+  position: absolute;
+  inset: -12% -6%;
+  z-index: -3;
+  pointer-events: none;
+}
+
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: .55;
+  will-change: transform;
+}
+.hero__orb--1 {
+  width: 46vw; height: 46vw; max-width: 620px; max-height: 620px;
+  top: -8%; right: -6%;
+  background: radial-gradient(circle at 34% 34%, rgba(201, 162, 39, .55), transparent 68%);
+  animation: orb-drift 17s ease-in-out infinite;
+}
+.hero__orb--2 {
+  width: 40vw; height: 40vw; max-width: 520px; max-height: 520px;
+  bottom: -14%; left: -8%;
+  background: radial-gradient(circle at 60% 40%, rgba(142, 42, 68, .52), transparent 66%);
+  animation: orb-drift 21s ease-in-out infinite reverse;
+}
+.hero__orb--3 {
+  width: 28vw; height: 28vw; max-width: 360px; max-height: 360px;
+  top: 42%; left: 46%;
+  background: radial-gradient(circle at 50% 50%, rgba(168, 114, 68, .40), transparent 70%);
+  animation: orb-drift 25s ease-in-out infinite;
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(3.5%, -4%, 0) scale(1.07); }
+  66%      { transform: translate3d(-3%, 3.5%, 0) scale(.95); }
+}
+
+/* Fine grid lines that fade out as you scroll */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: calc(.55 - var(--scroll) * .55);
+  background-image:
+    linear-gradient(to right, rgba(201, 162, 39, .16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 162, 39, .16) 1px, transparent 1px);
+  background-size: clamp(60px, 8vw, 110px) clamp(60px, 8vw, 110px);
+  mask-image: radial-gradient(80% 65% at 50% 45%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(80% 65% at 50% 45%, #000 0%, transparent 78%);
+  pointer-events: none;
+}
+
+/* Content lifts and dissolves on scroll */
+.hero__inner {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: 100%;
+  transform: translate3d(0, calc(var(--scroll) * -110px), 0) scale(calc(1 - var(--scroll) * .06));
+  opacity: calc(1 - var(--scroll) * 1.18);
+  will-change: transform, opacity;
+}
+
+.hero__copy { max-width: 620px; }
+
+.hero__eyebrow { margin-bottom: 1.5rem; }
+
+.hero__eyebrow { color: var(--gold-mid); }
+
+.hero__script {
+  display: block;
+  font-family: var(--font-script);
+  font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: -.15em;
+  line-height: 1.1;
+}
+
+.hero__title {
+  font-size: var(--fs-hero);
+  font-weight: 500;
+  line-height: .94;
+  letter-spacing: -.03em;
+  margin-bottom: 1.6rem;
+}
+.hero__title em {
+  font-style: italic;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__lead {
+  margin-bottom: 2.4rem;
+  max-width: 50ch;
+  color: rgba(248, 238, 221, .74);
+}
+
+.hero__actions { gap: 1rem; margin-bottom: 3rem; }
+
+/* Trust strip under the CTAs */
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.2rem, 3vw, 2.4rem);
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(201, 162, 39, .28);
+}
+.hero__trust-item { display: flex; align-items: center; gap: .6rem; }
+.hero__trust-item svg { width: 18px; height: 18px; color: var(--gold-mid); flex: none; }
+.hero__trust-item span {
+  font-size: var(--fs-micro);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(248, 238, 221, .66);
+}
+
+/* On the dark hero the ghost button needs light text */
+.hero .btn--ghost { --btn-fg: var(--cream); border-color: rgba(201, 162, 39, .5); }
+.hero .btn--ghost:hover { color: var(--espresso); }
+
+/* ---- Hero showpiece: stacked cake plates that rotate on scroll ---- */
+.hero__stage {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  transform: translate3d(0, calc(var(--scroll) * -50px), 0);
+}
+
+.hero__plate {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background:
+    conic-gradient(from calc(var(--scroll) * 220deg),
+      rgba(201, 162, 39, .75), rgba(142, 42, 68, .45), rgba(240, 220, 160, .8), rgba(201, 162, 39, .75));
+  filter: blur(3px);
+  opacity: .9;
+  animation: plate-spin 42s linear infinite;
+}
+@keyframes plate-spin { to { transform: rotate(360deg); } }
+
+/* A lit plate against the dark stage — the cake reads as spotlit */
+.hero__disc {
+  position: absolute;
+  inset: 11%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 26%, var(--ivory), var(--cream) 54%, #E4CDB0 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(201, 162, 39, .55),
+    0 0 90px rgba(201, 162, 39, .22),
+    0 50px 110px -40px rgba(0, 0, 0, .75);
+}
+
+/* Rotating dashed ring with the tagline */
+.hero__ring {
+  position: absolute;
+  inset: 0;
+  animation: ring-spin 34s linear infinite;
+  transform: rotate(calc(var(--scroll) * 90deg));
+}
+@keyframes ring-spin { to { transform: rotate(360deg); } }
+.hero__ring text { font-size: 5.6px; letter-spacing: .42em; text-transform: uppercase; fill: var(--gold-mid); }
+
+.hero__cake {
+  position: relative;
+  z-index: 3;
+  width: 62%;
+  filter: drop-shadow(0 26px 34px rgba(42, 20, 8, .26));
+  animation: cake-float 6.5s ease-in-out infinite;
+}
+@keyframes cake-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-14px) rotate(-1.4deg); }
+}
+
+/* Floating price/feature chips around the stage */
+.hero__chip {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .62rem 1.15rem;
+  border-radius: 999px;
+  /* Dark glass with a gold hairline: reads clearly against both the dark
+     stage and the lit plate the chips overlap. */
+  background: linear-gradient(150deg, rgba(43, 23, 16, .94), rgba(15, 8, 5, .94));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201, 162, 39, .55);
+  box-shadow: 0 18px 38px -18px rgba(0, 0, 0, .8);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(248, 238, 221, .9);
+  white-space: nowrap;
+  animation: chip-float 5.5s ease-in-out infinite;
+}
+.hero__chip b {
+  font-family: var(--font-display);
+  font-size: 1.14rem;
+  font-weight: 600;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+/* kept inside the stage box: the hero clips its overflow, so a chip hanging
+   further out gets sliced off on mid-width screens */
+.hero__chip--1 { top: 8%;    left: -1%;   animation-delay: -.4s; }
+.hero__chip--2 { top: 47%;   right: -1%;  animation-delay: -2.1s; }
+.hero__chip--3 { bottom: 7%; left: 4%;    animation-delay: -3.4s; }
+
+@keyframes chip-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-11px); }
+}
+
+/* Scroll cue — fades away as soon as you move */
+.hero__cue {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2rem;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+  transform: translateX(-50%);
+  opacity: calc(1 - var(--scroll) * 2.6);
+  transition: color .3s;
+  color: rgba(248, 238, 221, .6);
+}
+.hero__cue span {
+  font-size: .66rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+.hero__cue-track {
+  width: 1px;
+  height: 54px;
+  background: linear-gradient(rgba(201, 162, 39, .45), transparent);
+  position: relative;
+  overflow: hidden;
+}
+.hero__cue-track::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 40%;
+  background: linear-gradient(var(--gold-soft), transparent);
+  animation: cue-run 2.1s var(--ease-out) infinite;
+}
+@keyframes cue-run {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateY(260%); opacity: 0; }
+}
+
+@media (max-width: 940px) {
+  .hero { min-height: auto; padding-bottom: 6rem; }
+  .hero__inner { grid-template-columns: 1fr; text-align: center; }
+  .hero__copy { max-width: 100%; margin-inline: auto; }
+  .hero__lead { margin-inline: auto; }
+  .hero__actions, .hero__trust, .hero__eyebrow { justify-content: center; }
+  .hero__stage { width: min(78vw, 420px); margin-inline: auto; order: -1; }
+  .hero__cue { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   3. Scroll-driven "story" strip
+   -------------------------------------------------------------------------- */
+.story-track { position: relative; }
+.story-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+.story-line__fill {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 0;
+  background: linear-gradient(var(--gold-soft), var(--gold), var(--gold-deep));
+  transition: height .18s linear;
+}
+
+.story-step {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  padding-block: clamp(2rem, 5vw, 3.4rem);
+}
+.story-step__num {
+  width: 62px; height: 62px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--cream-2);
+  border: 1px solid var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--caramel);
+  box-shadow: 0 0 0 8px var(--cream-2);
+  transition: background .6s var(--ease), color .6s var(--ease), border-color .6s, transform .6s var(--ease-out);
+}
+.story-step.is-revealed .story-step__num {
+  background: var(--grad-gold);
+  color: var(--espresso);
+  border-color: transparent;
+  transform: scale(1.06);
+  box-shadow: 0 0 0 8px var(--cream-2), var(--shadow-gold);
+}
+.story-step__body h3 { margin-bottom: .6rem; }
+.story-step__body p { font-size: var(--fs-small); color: var(--ink-soft); }
+
+/* Every child is placed explicitly — auto-placement would push the number
+   onto a second row whenever the body sits in the third column. */
+.story-step__num  { grid-row: 1; grid-column: 2; }
+.story-step__body { grid-row: 1; }
+.story-step__art  { grid-row: 1; display: grid; place-items: center; }
+
+.story-step:nth-child(odd)  .story-step__body { grid-column: 1; text-align: right; }
+.story-step:nth-child(odd)  .story-step__art  { grid-column: 3; }
+.story-step:nth-child(even) .story-step__body { grid-column: 3; text-align: left; }
+.story-step:nth-child(even) .story-step__art  { grid-column: 1; }
+
+.story-step__art svg { width: clamp(90px, 12vw, 140px); opacity: .9; }
+
+@media (max-width: 760px) {
+  .story-line { left: 31px; }
+  .story-step { grid-template-columns: 62px 1fr; gap: 1.4rem; padding-block: 1.6rem; }
+  .story-step:nth-child(n) .story-step__num { grid-column: 1; grid-row: 1; }
+  .story-step:nth-child(odd) .story-step__body,
+  .story-step:nth-child(even) .story-step__body { grid-column: 2; grid-row: 1; text-align: left; }
+  .story-step__num { box-shadow: none; }
+  .story-step__art { display: none; }
+}
+
+/* --------------------------------------------------------------------------
+   4. Parallax helper — JS moves [data-parallax] by its speed
+   -------------------------------------------------------------------------- */
+[data-parallax] { will-change: transform; }
+
+/* Section-entry curtain used on split panels */
+.reveal-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+.reveal-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--cream-2);
+  transform: scaleY(1);
+  transform-origin: 50% 100%;
+  transition: transform 1.1s var(--ease-out);
+  z-index: 3;
+}
+.reveal-media.is-revealed::after { transform: scaleY(0); }
+
+/* --------------------------------------------------------------------------
+   5. Misc keyframes
+   -------------------------------------------------------------------------- */
+@keyframes pulse-soft {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50%      { opacity: .95; transform: scale(1.06); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 252, 247, .55) 42%, transparent 62%);
+  background-size: 200% 100%;
+  animation: shimmer 3.6s linear infinite;
+}
+
+/* --------------------------------------------------------------------------
+   6. Reduced motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  [data-reveal],
+  [data-stagger] > * { opacity: 1 !important; transform: none !important; clip-path: none !important; filter: none !important; }
+  .line__inner { transform: none !important; }
+  .hero__inner, .hero__stage { transform: none !important; opacity: 1 !important; }
+  .hero__cue { opacity: 1 !important; }
+  .reveal-media::after { display: none; }
+}
