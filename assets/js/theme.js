@@ -22,10 +22,8 @@
   var STORE_KEY = 'nm-theme';
 
   var THEMES = [
-    { id: '',         name: 'Chocolate & Gold',    dot: 'linear-gradient(135deg,#2B1710 0 50%,#C9A227 50% 100%)' },
-    { id: 'rose',     name: 'Rose Gold & Blush',   dot: 'linear-gradient(135deg,#35191E 0 50%,#B76E79 50% 100%)' },
-    { id: 'emerald',  name: 'Emerald & Gold',      dot: 'linear-gradient(135deg,#14261D 0 50%,#C9A227 50% 100%)' },
-    { id: 'burgundy', name: 'Burgundy & Champagne',dot: 'linear-gradient(135deg,#2E121C 0 50%,#D9C08C 50% 100%)' }
+    { id: '',      name: 'Chocolate & Gold (dark)', dot: 'linear-gradient(135deg,#2B1710 0 50%,#C9A227 50% 100%)' },
+    { id: 'blush', name: 'Blush & Gold (light)',    dot: 'linear-gradient(135deg,#F8E9EC 0 50%,#C9A227 50% 100%)' }
   ];
 
   /* ---- apply as early as possible so there is no colour flash ---------- */

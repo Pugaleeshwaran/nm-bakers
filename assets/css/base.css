@@ -61,8 +61,8 @@
 
   /* How dark the tint over that photo is. Higher = darker = easier to read.
      Drop to about .70 if you want the photo to show through more. */
-  --banner-veil: .86;
-  --hero-veil: .90;
+  --banner-veil: .72;
+  --hero-veil: .78;
 }
 
 /* ==========================================================================
@@ -139,103 +139,18 @@ body.page-contact  { --banner-image: url('../hero-bg/hero-contact.png'); }
 /* ==========================================================================
    COLOUR THEMES
    --------------------------------------------------------------------------
-   Theme 1 (Chocolate & Gold) is everything defined above this line.
-   The three below switch on when <html> carries data-theme="...".
+   The site has two themes:
 
-   The floating swatch buttons in the bottom-left corner do that for you.
-   To remove that switcher before going live, delete the one line
-       <script src="assets/js/theme.js?v=18"></script>
-   from the four HTML files. The themes themselves stay available.
+     1. CHOCOLATE & GOLD (dark)  — everything defined above this line.
+                                   This is the default.
+     2. BLUSH & GOLD (light)     — near the bottom of this file, switched on
+                                   when <html> carries data-theme="blush".
+
+   The two swatch buttons in the bottom-left corner switch between them.
+   To remove that switcher before going live, delete this one line
+       <script src="assets/js/theme.js?v=27"></script>
+   from the four HTML files. Both themes stay available either way.
    ========================================================================== */
-
-/* ---- THEME 2 — ROSE GOLD & BLUSH -------------------------------------
-   Soft, romantic, boutique. Suits bento cakes and celebration orders. */
-:root[data-theme="rose"] {
-  --noir: #150A0B;      --noir-rgb: 21, 10, 11;
-  --espresso: #1F0F12;  --espresso-rgb: 31, 15, 18;
-  --cocoa: #35191E;     --cocoa-rgb: 53, 25, 30;
-  --choco: #4E2530;
-  --mocha: #6E3A44;
-  --caramel: #A9707A;
-  --dark-top: #2A1418;  --dark-top-rgb: 42, 20, 24;
-
-  --gold-deep: #8A4A55; --gold-deep-rgb: 138, 74, 85;
-  --gold: #B76E79;      --gold-rgb: 183, 110, 121;
-  --gold-mid: #D79AA2;
-  --gold-soft: #F0CDD2; --gold-soft-rgb: 240, 205, 210;
-  --grad-gold: linear-gradient(100deg, #8A4A55 0%, #B76E79 20%, #F3D8DC 47%, #B76E79 70%, #8A4A55 100%);
-  --grad-gold-warm: linear-gradient(120deg, #A9707A 0%, #B76E79 55%, #E8B9C0 100%);
-
-  --wine: #7A2A3C;      --wine-rgb: 122, 42, 60;
-  --rose: #A8455A;      --rose-rgb: 168, 69, 90;
-  --blush: #F6E1E4;
-  --blush-deep: #E0B5BD;
-
-  --ivory: #FFFAF8;
-  --cream: #FBF0EE;     --cream-rgb: 251, 240, 238;
-  --cream-2: #F2DFDD;
-
-  --ink: #2A1216;
-  --ink-soft: #5C3A40;
-  --ink-muted: #8A6B70;
-}
-
-/* ---- THEME 3 — EMERALD & GOLD ---------------------------------------
-   Deep green with champagne gold. The most distinctive. */
-:root[data-theme="emerald"] {
-  --noir: #060F0B;      --noir-rgb: 6, 15, 11;
-  --espresso: #0B1712;  --espresso-rgb: 11, 23, 18;
-  --cocoa: #14261D;     --cocoa-rgb: 20, 38, 29;
-  --choco: #1E3A2C;
-  --mocha: #2E5240;
-  --caramel: #7E9A82;
-  --dark-top: #0F2118;  --dark-top-rgb: 15, 33, 24;
-
-  --wine: #1F6B4A;      --wine-rgb: 31, 107, 74;
-  --rose: #2A855C;      --rose-rgb: 42, 133, 92;
-  --blush: #E4EFE6;
-  --blush-deep: #C3DAC9;
-
-  --ivory: #FCFBF4;
-  --cream: #F5F1E3;     --cream-rgb: 245, 241, 227;
-  --cream-2: #E8E2CE;
-
-  --ink: #0E1A13;
-  --ink-soft: #35473C;
-  --ink-muted: #64756A;
-}
-
-/* ---- THEME 4 — BURGUNDY & CHAMPAGNE ---------------------------------
-   Rich wine red with pale champagne. Warm and festive. */
-:root[data-theme="burgundy"] {
-  --noir: #12060A;      --noir-rgb: 18, 6, 10;
-  --espresso: #1C0910;  --espresso-rgb: 28, 9, 16;
-  --cocoa: #2E121C;     --cocoa-rgb: 46, 18, 28;
-  --choco: #451B29;
-  --mocha: #63293B;
-  --caramel: #9A5F6E;
-  --dark-top: #280D18;  --dark-top-rgb: 40, 13, 24;
-
-  --gold-deep: #9A7E4A; --gold-deep-rgb: 154, 126, 74;
-  --gold: #D9C08C;      --gold-rgb: 217, 192, 140;
-  --gold-mid: #E8D6AE;
-  --gold-soft: #F7EDD6; --gold-soft-rgb: 247, 237, 214;
-  --grad-gold: linear-gradient(100deg, #9A7E4A 0%, #D9C08C 20%, #FBF4E2 47%, #D9C08C 70%, #9A7E4A 100%);
-  --grad-gold-warm: linear-gradient(120deg, #9A5F6E 0%, #D9C08C 55%, #F1E2BF 100%);
-
-  --wine: #6E1428;      --wine-rgb: 110, 20, 40;
-  --rose: #8E1E36;      --rose-rgb: 142, 30, 54;
-  --blush: #F7E4E8;
-  --blush-deep: #E3BCC5;
-
-  --ivory: #FFFBF6;
-  --cream: #F9F1E6;     --cream-rgb: 249, 241, 230;
-  --cream-2: #EFE1D0;
-
-  --ink: #241017;
-  --ink-soft: #543440;
-  --ink-muted: #856872;
-}
 
 /* --------------------------------------------------------------------------
    2. Reset
@@ -743,4 +658,238 @@ p {
   .btn {
     padding: .9rem 1.7rem;
   }
+}
+/* ==========================================================================
+   THEME 2 — BLUSH & GOLD (light)
+   --------------------------------------------------------------------------
+   Soft, romantic, feminine. Pale pink with champagne gold.
+
+   A light theme is more than new colours: the hero, the page banners, the
+   footer and the dark sections were all built for pale text on a dark
+   ground. So this theme sets its palette AND the block below flips those
+   surfaces over. --panel and --panel-2 are the two pale grounds that
+   replace the dark ones.
+   ========================================================================== */
+:root[data-theme="blush"] {
+  /* The two pale grounds that replace the dark ones.
+     --panel   = hero and page banners
+     --panel-2 = footer, marquee and the flipped "dark" sections (deeper,
+                 so the sections still read as separate bands) */
+  --panel: #FDF5F6;
+  --panel-2: #F8E9EC;
+  --panel-rgb: 253, 245, 246;
+  --panel-2-rgb: 248, 233, 236;
+
+  /* these stay genuinely dark — they are text and buttons, not backgrounds */
+  --noir: #2A141C;      --noir-rgb: 42, 20, 28;
+  --espresso: #331A22;  --espresso-rgb: 51, 26, 34;
+  --cocoa: #4A2630;     --cocoa-rgb: 74, 38, 48;
+  --choco: #63343F;
+  --mocha: #7E4A56;
+  --caramel: #A9707C;
+  --dark-top: #3D1F29;  --dark-top-rgb: 61, 31, 41;
+
+  --gold-deep: #A07A2A; --gold-deep-rgb: 160, 122, 42;
+  --gold: #C9A227;      --gold-rgb: 201, 162, 39;
+  --gold-mid: #DFC163;
+  --gold-soft: #B08C22; --gold-soft-rgb: 176, 140, 34;
+  --grad-gold: linear-gradient(100deg, #A07A2A 0%, #C9A227 20%, #EFDCA0 47%, #C9A227 70%, #A07A2A 100%);
+  --grad-gold-warm: linear-gradient(120deg, #A9707C 0%, #C9A227 55%, #E8CE7C 100%);
+
+  --wine: #A85A72;      --wine-rgb: 168, 90, 114;
+  --rose: #C4788C;      --rose-rgb: 196, 120, 140;
+  --blush: #FBE4E8;
+  --blush-deep: #F0C3CC;
+
+  --ivory: #FFFFFF;                 /* cards stay white so they lift off the pink */
+  --cream: #FDF5F6;     --cream-rgb: 253, 245, 246;
+  --cream-2: #F5DFE4;
+
+  --bg: #FDF5F6;
+  --ink: #3A1F27;
+  --ink-soft: #6B4A54;
+  --ink-muted: #9A7A84;
+
+  --banner-veil: .93;
+  --hero-veil: .95;
+}
+
+/* ==========================================================================
+   Shared light-theme surface flips
+   Every surface that was designed dark becomes pale, and its text goes dark.
+   ========================================================================== */
+/* The hero photographs are dark bakery scenes, shot for the dark theme.
+   Simply thinning the pale veil over them turns the banner muddy and the
+   dark text stops reading. So on the light theme the photo goes on its own
+   layer and is BRIGHTENED, with an even pale veil above it:
+
+       ::before   the photo, brightened          (behind everything)
+       ::after    the pale veil                  (above the photo)
+       content    headline and text              (above the veil)
+
+   That way the picture stays clearly visible and the text stays readable.
+   --photo-lift controls how bright, --photo-veil how strong the veil. */
+:root[data-theme="blush"] {
+  --photo-lift: 1.7;
+  --photo-veil: .64;
+}
+
+:root[data-theme="blush"] .hero,
+:root[data-theme="blush"] .page-banner{
+  color: var(--ink);
+  background:
+    radial-gradient(85% 75% at 50% 0%, rgba(var(--gold-rgb), .12) 0%, transparent 58%),
+    var(--panel);
+}
+
+:root[data-theme="blush"] .hero::before,
+:root[data-theme="blush"] .page-banner::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  background-image: var(--banner-image);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  filter: brightness(var(--photo-lift)) saturate(.8) contrast(.8);
+}
+
+/* The veil is strongest in the middle, where the words are, and fades out
+   towards the edges so the photograph still shows. A flat veil either hides
+   the picture or leaves the text sitting on a busy background — this does
+   both jobs at once. */
+:root[data-theme="blush"] .hero.grain::after,
+:root[data-theme="blush"] .page-banner.grain::after{
+  background-image: none;
+  background:
+    radial-gradient(72% 80% at 50% 50%,
+      rgba(var(--panel-rgb), calc(var(--photo-veil) + .30)) 0%,
+      rgba(var(--panel-rgb), calc(var(--photo-veil) + .16)) 48%,
+      rgba(var(--panel-2-rgb), calc(var(--photo-veil) - .16)) 100%),
+    linear-gradient(165deg,
+      rgba(var(--panel-rgb), calc(var(--photo-veil) - .18)) 0%,
+      rgba(var(--panel-2-rgb), calc(var(--photo-veil) - .14)) 100%);
+  mix-blend-mode: normal;
+  opacity: 1;
+  z-index: 1;
+}
+
+:root[data-theme="blush"] .hero h1,
+:root[data-theme="blush"] .page-banner h1{ color: var(--cocoa); }
+
+/* over a photograph the softer greys stop reading, so the banner text uses
+   the full-strength ink and the eyebrow uses the deep gold, not the pale one */
+:root[data-theme="blush"] .hero__lead,
+:root[data-theme="blush"] .page-banner .lead{ color: var(--ink); }
+
+:root[data-theme="blush"] .page-banner .eyebrow,
+:root[data-theme="blush"] .hero__eyebrow{ color: var(--gold-deep); }
+
+:root[data-theme="blush"] .hero__trust{ border-top-color: rgba(var(--gold-rgb), .38); }
+
+:root[data-theme="blush"] .breadcrumb{ color: var(--ink-soft); }
+:root[data-theme="blush"] .hero__cue{ color: var(--ink-muted); }
+
+/* the trust row is real content, so give it proper reading contrast
+   (--ink-muted came out at 3.6:1 on pink, below the 4.5:1 minimum) */
+:root[data-theme="blush"] .hero__trust-item span{ color: var(--ink-soft); }
+
+/* floating price chips: white card instead of dark glass */
+:root[data-theme="blush"] .hero__chip{
+  background: rgba(255, 255, 255, .92);
+  border-color: rgba(var(--gold-rgb), .5);
+  color: var(--cocoa);
+  box-shadow: 0 16px 34px -18px rgba(var(--cocoa-rgb), .4);
+}
+
+:root[data-theme="blush"] .hero .btn--ghost{ --btn-fg: var(--cocoa); }
+
+/* marquee ribbon */
+:root[data-theme="blush"] .marquee{
+  background: var(--panel-2);
+  color: var(--cocoa);
+  border-block-color: rgba(var(--gold-rgb), .3);
+}
+:root[data-theme="blush"] .marquee__item{ color: var(--cocoa); }
+
+/* the "dark" content sections */
+:root[data-theme="blush"] .section--dark{
+  color: var(--ink);
+  background:
+    radial-gradient(70% 60% at 50% 0%, rgba(var(--gold-rgb), .12), transparent 64%),
+    var(--panel-2);
+}
+:root[data-theme="blush"] .section--dark h2,
+:root[data-theme="blush"] .section--dark h3{ color: var(--cocoa); }
+:root[data-theme="blush"] .section--dark .lead{ color: var(--ink-soft); }
+:root[data-theme="blush"] .section--dark .feature{
+  background: var(--ivory);
+  border-color: rgba(var(--gold-rgb), .26);
+}
+:root[data-theme="blush"] .section--dark .feature p{ color: var(--ink-soft); }
+:root[data-theme="blush"] .section--dark .stat__label{ color: var(--ink-muted); }
+:root[data-theme="blush"] .section--dark .btn--ghost{ --btn-fg: var(--cocoa); }
+
+/* call-to-action band */
+:root[data-theme="blush"] .cta-band{
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--panel) 0%, var(--panel-2) 70%);
+  border-color: rgba(var(--gold-rgb), .4);
+}
+:root[data-theme="blush"] .cta-band h2{ color: var(--cocoa); }
+:root[data-theme="blush"] .cta-band .lead{ color: var(--ink-soft); }
+:root[data-theme="blush"] .btn--outline-light{
+  --btn-fg: var(--cocoa);
+  border-color: rgba(var(--gold-rgb), .5);
+}
+
+/* footer */
+:root[data-theme="blush"] .site-footer{
+  background: var(--panel-2);
+  color: var(--ink-soft);
+  border-top-color: rgba(var(--gold-rgb), .45);
+}
+:root[data-theme="blush"] .footer__brand .brand__name{ color: var(--cocoa); }
+:root[data-theme="blush"] .footer__title{ color: var(--caramel); }
+:root[data-theme="blush"] .footer__socials a{
+  border-color: rgba(var(--cocoa-rgb), .22);
+  color: var(--ink-soft);
+}
+:root[data-theme="blush"] .footer__bar{
+  color: var(--ink-muted);
+  border-top-color: rgba(var(--cocoa-rgb), .14);
+}
+
+/* header: dark text on the pale hero, pale glass when stuck */
+:root[data-theme="blush"] .site-header.is-stuck{
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 12px 36px -24px rgba(var(--cocoa-rgb), .7);
+}
+:root[data-theme="blush"] .site-header.is-stuck .nav__link,
+:root[data-theme="blush"] body.has-dark-hero .site-header:not(.is-stuck) .nav__link{ color: var(--ink-soft); }
+:root[data-theme="blush"] .site-header.is-stuck .nav__link:hover,
+:root[data-theme="blush"] .site-header.is-stuck .nav__link.is-active,
+:root[data-theme="blush"] body.has-dark-hero .site-header:not(.is-stuck) .nav__link:hover,
+:root[data-theme="blush"] body.has-dark-hero .site-header:not(.is-stuck) .nav__link.is-active{ color: var(--cocoa); }
+:root[data-theme="blush"] .site-header.is-stuck .nav-toggle__bars span,
+:root[data-theme="blush"] body.has-dark-hero .site-header:not(.is-stuck) .nav-toggle__bars span{ background: var(--cocoa); }
+
+/* mobile drawer */
+:root[data-theme="blush"] .nav-drawer{
+  background:
+    radial-gradient(70% 60% at 50% 20%, rgba(var(--gold-rgb), .12), transparent 60%),
+    linear-gradient(170deg, var(--panel), var(--panel-2));
+}
+:root[data-theme="blush"] .nav-drawer__list a{ color: var(--cocoa); }
+
+/* the round badge over About-page pictures keeps its dark ground for contrast */
+:root[data-theme="blush"] .media-badge span{ color: rgba(255, 255, 255, .8); }
+
+/* icon tiles inside a flipped section: keep the dark plum ground so the
+   gold symbol has something to read against */
+:root[data-theme="blush"] .section--dark .feature__icon{
+  background: linear-gradient(140deg, var(--cocoa), var(--espresso));
+  color: var(--gold-mid);
+  box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb), .45);
 }
