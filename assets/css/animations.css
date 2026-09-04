@@ -65,7 +65,7 @@
   opacity: 1;
   transform: none;
   filter: none;
-  clip-path: inset(0 0 0 0);
+  /* clip-path: inset(0 0 0 0); */
 }
 
 /* Staggered children */

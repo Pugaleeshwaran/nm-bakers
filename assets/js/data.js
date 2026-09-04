@@ -17,13 +17,13 @@ window.NM_CONFIG = {
   phoneRaw: '919876543210',          // digits only, with country code — used for tel: & WhatsApp
   email: 'hello@nmbakers.in',
   addressLine1: 'Home Bakery Studio',
-  addressLine2: 'Vellore, Tamil Nadu 632014',
+  addressLine2: 'Madurai, Tamil Nadu 632014',
   instagram: 'https://instagram.com/',
   facebook: 'https://facebook.com/',
   hours: [
     { day: 'Monday — Friday', time: '9:00 AM — 8:00 PM' },
-    { day: 'Saturday',        time: '9:00 AM — 9:00 PM' },
-    { day: 'Sunday',          time: '10:00 AM — 6:00 PM' },
+    { day: 'Saturday', time: '9:00 AM — 9:00 PM' },
+    { day: 'Sunday', time: '10:00 AM — 6:00 PM' },
     { day: 'Public holidays', time: 'Pre-orders only', closed: true }
   ],
   noticeHours: 24                     // minimum notice for custom orders
@@ -52,59 +52,59 @@ window.NM_IMAGES = {
   /* ---- Big pictures on the home page ----
      Leave blank to keep the hand-drawn illustration.
      Put a filename here to use your own photo instead. */
-  'hero-cake':                 '',   // the big cake in the hero
-  'custom-cake':               '',   // the "Customised cakes" panel
+  'hero-cake': '',   // the big cake in the hero
+  'custom-cake': 'offcation-cake.png',   // the "Customised cakes" panel
 
   /* ---- The four "How an order works" steps (home page) ---- */
-  'step-1':                    '',   // you tell us the occasion
-  'step-2':                    '',   // we shop and mix that day
-  'step-3':                    '',   // baked in small batches
-  'step-4':                    '',   // finished and sealed
+  'step-1': '',   // you tell us the occasion
+  'step-2': '',   // we shop and mix that day
+  'step-3': '',   // baked in small batches
+  'step-4': '',   // finished and sealed
 
   /* ---- About page pictures ---- */
-  'about-1':                   '',   // top of the About page
-  'about-2':                   '',   // "In the pantry" section
+  'about-1': '',   // top of the About page
+  'about-2': '',   // "In the pantry" section
 
   /* ---- Category cards (home page) ---- */
-  'cakes':                     'cake.png',
-  'bento':                     'b-cake.png',
-  'brownies':                  'browine.png',
-  'cookies':                   'cookie.png',
-  'teacakes':                  'teacake.png',
+  'cakes': 'cake.png',
+  'bento': 'b-cake.png',
+  'brownies': 'browine.png',
+  'cookies': 'cookie.png',
+  'teacakes': 'teacake.png',
 
   /* ---- Cakes ---- */
-  'vanilla-cake':              'vennila.png',
-  'chocolate-cake':            'choco.jpg',
-  'black-forest-cake':         'black-forest.jpg',
-  'white-forest-cake':         '',   // add white-forest-cake.png to assets/images/ and it appears automatically
-  'red-velvet-cake':           'red-velvert.png',
-  'mango-cake':                'mongo.png',
-  'rose-milk-cake':            'rosemink.png',
-  'blueberry-cake':            '',   // add blueberry-cake.png to assets/images/ and it appears automatically
-  'coffee-tres-leches':        'coffe.png',
+  'vanilla-cake': 'vennila.png',
+  'chocolate-cake': 'choco.png',
+  'black-forest-cake': 'black-forest.jpg',
+  'white-forest-cake': 'white-forst.png',   // add white-forest-cake.png to assets/images/ and it appears automatically
+  'red-velvet-cake': 'red-velvert.png',
+  'mango-cake': 'mongo.png',
+  'rose-milk-cake': 'rosemink.png',
+  'blueberry-cake': 'blueberry.png',   // add blueberry-cake.png to assets/images/ and it appears automatically
+  'coffee-tres-leches': 'coffe.png',
 
   /* ---- Bento cakes ---- */
-  'vanilla-bento':             'bendo-ven.png',
-  'chocolate-bento':           '',   // add chocolate-bento.png to assets/images/ and it appears automatically
-  'red-velvet-bento':          '',   // add red-velvet-bento.png to assets/images/ and it appears automatically
-  'custom-bento':              '',   // add custom-bento.png to assets/images/ and it appears automatically
+  'vanilla-bento': 'bendo-ven.png',
+  'chocolate-bento': 'bendo-cho.png',   // add chocolate-bento.png to assets/images/ and it appears automatically
+  'red-velvet-bento': 'red-v-bendo.png',   // add red-velvet-bento.png to assets/images/ and it appears automatically
+  'custom-bento': 'costom-bento.png',   // add custom-bento.png to assets/images/ and it appears automatically
 
   /* ---- Brownies ---- */
-  'classic-brownie':           'classic-brownie.png',
-  'nuts-brownie':              'nut-brownie.png',
-  'nutella-brownie':           'nutella-brownie.png',
-  'kinder-brownie':            '',   // add kinder-brownie.png to assets/images/ and it appears automatically
+  'classic-brownie': 'classic-brownie.png',
+  'nuts-brownie': 'nut-brownie.png',
+  'nutella-brownie': 'nutella-brownie.png',
+  'kinder-brownie': 'kinder-brownie.png',   // add kinder-brownie.png to assets/images/ and it appears automatically
 
   /* ---- Cookies ---- */
-  'choco-chip-cookies':        'chochip-cookie.png',
-  'double-chocolate-cookies':  'double-cholate-cookie.png',
-  'butter-cookies':            'butter-cookie.png',
+  'choco-chip-cookies': 'chochip-cookie.png',
+  'double-chocolate-cookies': 'double-cholate-cookie.png',
+  'butter-cookies': 'butter-cookie.png',
 
   /* ---- Tea cakes & others ---- */
-  'tea-cake-plain':            'plance-tea.png',
-  'marble-cake':               'Marble-Cake.png',
-  'chocolate-tea-cake':        'choco-tea-cake.png',
-  'dry-fruit-cake':            'dry-fruit-tea-cake.png',
+  'tea-cake-plain': 'plance-tea.png',
+  'marble-cake': 'Marble-Cake.png',
+  'chocolate-tea-cake': 'choco-tea-cake.png',
+  'dry-fruit-cake': 'dry-fruit-tea-cake.png',
 };
 
 /* --------------------------------------------------------------------------
@@ -303,12 +303,12 @@ window.NM_PRODUCTS = [
    Why choose us — straight from the menu card
    -------------------------------------------------------------------------- */
 window.NM_VALUES = [
-  { icon: 'sparkle',  title: '100% Fresh & Homemade',   text: 'Every order is baked after you place it — never pulled from a freezer or a shelf.' },
-  { icon: 'wheat',    title: 'Premium Ingredients',      text: 'Couverture chocolate, real butter, farm eggs and Alphonso pulp in season.' },
-  { icon: 'leaf',     title: 'No Preservatives',         text: 'Nothing artificial goes into the batter, which is exactly why it tastes like home.' },
-  { icon: 'shield',   title: 'Hygienic Preparation',     text: 'A dedicated home studio, sanitised surfaces and sealed, tamper-proof packing.' },
-  { icon: 'heart',    title: 'Made with Lots of Love',   text: 'Small batches, one baker, and the patience that mass production cannot buy.' },
-  { icon: 'gift',     title: 'Customised for You',       text: 'Birthdays, anniversaries and every occasion in between, designed to your brief.' }
+  { icon: 'sparkle', title: '100% Fresh & Homemade', text: 'Every order is baked after you place it — never pulled from a freezer or a shelf.' },
+  { icon: 'wheat', title: 'Premium Ingredients', text: 'Couverture chocolate, real butter, farm eggs and Alphonso pulp in season.' },
+  { icon: 'leaf', title: 'No Preservatives', text: 'Nothing artificial goes into the batter, which is exactly why it tastes like home.' },
+  { icon: 'shield', title: 'Hygienic Preparation', text: 'A dedicated home studio, sanitised surfaces and sealed, tamper-proof packing.' },
+  { icon: 'heart', title: 'Made with Lots of Love', text: 'Small batches, one baker, and the patience that mass production cannot buy.' },
+  { icon: 'gift', title: 'Customised for You', text: 'Birthdays, anniversaries and every occasion in between, designed to your brief.' }
 ];
 
 /* --------------------------------------------------------------------------
@@ -333,10 +333,10 @@ window.NM_TESTIMONIALS = [
    How we bake — home page scroll story
    -------------------------------------------------------------------------- */
 window.NM_PROCESS = [
-  { art: 'chat',    title: 'You tell us the occasion', text: 'Message us on WhatsApp with the flavour, the weight and the date. We reply with a quote the same day.' },
-  { art: 'bowl',    title: 'We shop and mix that day', text: 'Butter, eggs and cream are bought fresh for your order. Batter is mixed by hand, never held overnight.' },
-  { art: 'oven',    title: 'Baked in small batches',   text: 'One cake at a time in the home studio, so the bake, the soak and the crumb are all watched closely.' },
-  { art: 'box',     title: 'Finished and sealed',      text: 'Frosted, decorated, then boxed and sealed the hour before it reaches you — still fragrant.' }
+  { art: 'chat', title: 'You tell us the occasion', text: 'Message us on WhatsApp with the flavour, the weight and the date. We reply with a quote the same day.' },
+  { art: 'bowl', title: 'We shop and mix that day', text: 'Butter, eggs and cream are bought fresh for your order. Batter is mixed by hand, never held overnight.' },
+  { art: 'oven', title: 'Baked in small batches', text: 'One cake at a time in the home studio, so the bake, the soak and the crumb are all watched closely.' },
+  { art: 'box', title: 'Finished and sealed', text: 'Frosted, decorated, then boxed and sealed the hour before it reaches you — still fragrant.' }
 ];
 
 /* --------------------------------------------------------------------------

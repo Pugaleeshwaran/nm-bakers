@@ -174,8 +174,8 @@
 .hero__cake .card-photo,
 .custom-panel__art .card-photo,
 .story-step__art .card-photo {
-  height: auto;
-  object-fit: contain;
+
+  object-fit: cover;
   border-radius: 0;
 }
 
