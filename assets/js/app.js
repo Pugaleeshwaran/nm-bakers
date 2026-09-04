@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — app.js
+   NM BAKERS — app.js
    UI behaviour and content rendering shared across all four pages.
      · business details injected from NM_CONFIG
      · mobile navigation drawer
@@ -273,7 +273,12 @@
               '<p>' + esc(step.text) + '</p>' +
             '</div>' +
             '<div class="story-step__num">' + ('0' + (i + 1)) + '</div>' +
-            '<div class="story-step__art">' + ART.get(step.art) + '</div>' +
+            '<div class="story-step__art">' +
+              // a photo if one is named in NM_IMAGES, otherwise the line drawing
+              (IMG['step-' + (i + 1)]
+                ? ART.photo('step-' + (i + 1), step.title)
+                : ART.get(step.art)) +
+            '</div>' +
           '</div>';
       }).join('');
     }

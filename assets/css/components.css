@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — components.css
+   NM BAKERS — components.css
    Cards, product tiles, filters, stats, testimonials, forms, accordion
    ========================================================================== */
 
@@ -47,7 +47,7 @@
   padding: clamp(1.6rem, 2.4vw, 2.2rem);
   border-radius: var(--radius-lg);
   background: var(--surface);
-  border: 1px solid rgba(201, 162, 39, .22);
+  border: 1px solid rgba(var(--gold-rgb), .22);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   isolation: isolate;
@@ -67,7 +67,7 @@
 }
 
 .category-card:hover {
-  border-color: rgba(201, 162, 39, .55);
+  border-color: rgba(var(--gold-rgb), .55);
 }
 
 .category-card:hover {
@@ -172,18 +172,26 @@
 
 /* The big home-page pictures are shown whole, not cropped to a box */
 .hero__cake .card-photo,
-.custom-panel__art .card-photo {
+.custom-panel__art .card-photo,
+.story-step__art .card-photo {
   height: auto;
   object-fit: contain;
   border-radius: 0;
 }
+
+/* Process-step pictures match the size of the line drawings they replace */
+.story-step__art .card-photo {
+  width: clamp(90px, 12vw, 140px);
+  border-radius: var(--radius);
+}
+
 
 .product-card {
   position: relative;
   display: flex;
   flex-direction: column;
   background: var(--surface);
-  border: 1px solid rgba(201, 162, 39, .22);
+  border: 1px solid rgba(var(--gold-rgb), .22);
   box-shadow: var(--shadow-sm);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -193,7 +201,7 @@
 .product-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(201, 162, 39, .55);
+  border-color: rgba(var(--gold-rgb), .55);
 }
 
 .product-card__art {
@@ -390,7 +398,7 @@
 .filter-tab.is-active {
   background: linear-gradient(150deg, var(--cocoa), var(--espresso));
   color: var(--gold-soft);
-  box-shadow: inset 0 0 0 1px rgba(201, 162, 39, .5);
+  box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb), .5);
 }
 
 .filter-tab span {
@@ -525,7 +533,7 @@
   border-radius: 16px;
   background: linear-gradient(140deg, var(--cocoa), var(--espresso));
   color: var(--gold-mid);
-  box-shadow: inset 0 0 0 1px rgba(201, 162, 39, .45);
+  box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb), .45);
   transition: transform .6s var(--ease-out);
 }
 
@@ -548,22 +556,22 @@
 }
 
 .section--dark .feature {
-  background: rgba(248, 238, 221, .045);
-  border-color: rgba(201, 162, 39, .22);
+  background: rgba(var(--cream-rgb), .045);
+  border-color: rgba(var(--gold-rgb), .22);
 }
 
 .section--dark .feature:hover {
-  border-color: rgba(201, 162, 39, .55);
+  border-color: rgba(var(--gold-rgb), .55);
 }
 
 .section--dark .feature p {
-  color: rgba(248, 238, 221, .66);
+  color: rgba(var(--cream-rgb), .66);
 }
 
 .section--dark .feature__icon {
-  background: rgba(201, 162, 39, .16);
+  background: rgba(var(--gold-rgb), .16);
   color: var(--gold-soft);
-  box-shadow: inset 0 0 0 1px rgba(201, 162, 39, .45);
+  box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb), .45);
 }
 
 /* --------------------------------------------------------------------------
@@ -592,7 +600,7 @@
 }
 
 .section--dark .stat+.stat::before {
-  background: linear-gradient(transparent, rgba(192, 152, 63, .35), transparent);
+  background: linear-gradient(transparent, rgba(var(--gold-rgb), .35), transparent);
 }
 
 .stat__num {
@@ -623,7 +631,7 @@
 }
 
 .section--dark .stat__label {
-  color: rgba(251, 244, 234, .6);
+  color: rgba(var(--cream-rgb), .6);
 }
 
 @media (max-width: 680px) {
@@ -700,7 +708,7 @@
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--gold-soft);
-  box-shadow: inset 0 0 0 1px rgba(201, 162, 39, .45);
+  box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb), .45);
 }
 
 .testimonial__name {
@@ -1027,11 +1035,11 @@
   border-radius: 14px;
   background: linear-gradient(140deg, var(--cocoa), var(--espresso));
   color: var(--gold-soft);
-  box-shadow: inset 0 0 0 1px rgba(201, 162, 39, .45);
+  box-shadow: inset 0 0 0 1px rgba(var(--gold-rgb), .45);
 }
 
 .info-tile:hover {
-  border-color: rgba(201, 162, 39, .5);
+  border-color: rgba(var(--gold-rgb), .5);
 }
 
 .info-tile__icon svg {
@@ -1103,7 +1111,7 @@
 }
 
 .cta-band {
-  border: 1px solid rgba(201, 162, 39, .32);
+  border: 1px solid rgba(var(--gold-rgb), .32);
   box-shadow: var(--shadow-lg);
 }
 
@@ -1113,8 +1121,8 @@
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(45% 60% at 12% 20%, rgba(201, 162, 39, .34), transparent 70%),
-    radial-gradient(45% 60% at 88% 84%, rgba(142, 42, 68, .34), transparent 70%);
+    radial-gradient(45% 60% at 12% 20%, rgba(var(--gold-rgb), .34), transparent 70%),
+    radial-gradient(45% 60% at 88% 84%, rgba(var(--rose-rgb), .34), transparent 70%);
 }
 
 .cta-band h2 {
@@ -1123,7 +1131,7 @@
 }
 
 .cta-band .lead {
-  color: rgba(248, 238, 221, .74);
+  color: rgba(var(--cream-rgb), .74);
   margin-inline: auto;
   margin-bottom: 2.2rem;
 }

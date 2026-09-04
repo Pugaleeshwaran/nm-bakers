@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — animations.css
+   NM BAKERS — animations.css
    Hero scroll choreography, reveal system, keyframes
    ========================================================================== */
 
@@ -154,9 +154,14 @@
      page reads in the first second. */
   color: var(--cream);
   background:
-    radial-gradient(90% 75% at 74% 30%, rgba(201, 162, 39, .20) 0%, transparent 58%),
-    radial-gradient(70% 60% at 12% 82%, rgba(122, 31, 53, .28) 0%, transparent 62%),
-    linear-gradient(165deg, #251409 0%, var(--espresso) 46%, var(--noir) 100%);
+    radial-gradient(90% 75% at 74% 30%, rgba(var(--gold-rgb), .20) 0%, transparent 58%),
+    radial-gradient(70% 60% at 12% 82%, rgba(var(--wine-rgb), .28) 0%, transparent 62%),
+    linear-gradient(165deg,
+      rgba(var(--dark-top-rgb), var(--hero-veil)) 0%,
+      rgba(var(--espresso-rgb), var(--hero-veil)) 46%,
+      rgba(var(--noir-rgb), calc(var(--hero-veil) + .05)) 100%),
+    var(--banner-image) center right / cover no-repeat,
+    var(--noir);
 }
 
 .hero h1 {
@@ -186,7 +191,7 @@
   max-height: 620px;
   top: -8%;
   right: -6%;
-  background: radial-gradient(circle at 34% 34%, rgba(201, 162, 39, .55), transparent 68%);
+  background: radial-gradient(circle at 34% 34%, rgba(var(--gold-rgb), .55), transparent 68%);
   animation: orb-drift 17s ease-in-out infinite;
 }
 
@@ -197,7 +202,7 @@
   max-height: 520px;
   bottom: -14%;
   left: -8%;
-  background: radial-gradient(circle at 60% 40%, rgba(142, 42, 68, .52), transparent 66%);
+  background: radial-gradient(circle at 60% 40%, rgba(var(--rose-rgb), .52), transparent 66%);
   animation: orb-drift 21s ease-in-out infinite reverse;
 }
 
@@ -235,8 +240,8 @@
   z-index: -2;
   opacity: calc(.55 - var(--scroll) * .55);
   background-image:
-    linear-gradient(to right, rgba(201, 162, 39, .16) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(201, 162, 39, .16) 1px, transparent 1px);
+    linear-gradient(to right, rgba(var(--gold-rgb), .16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--gold-rgb), .16) 1px, transparent 1px);
   background-size: clamp(60px, 8vw, 110px) clamp(60px, 8vw, 110px);
   mask-image: radial-gradient(80% 65% at 50% 45%, #000 0%, transparent 78%);
   -webkit-mask-image: radial-gradient(80% 65% at 50% 45%, #000 0%, transparent 78%);
@@ -300,7 +305,7 @@
 .hero__lead {
   margin-bottom: 2.4rem;
   max-width: 50ch;
-  color: rgba(248, 238, 221, .74);
+  color: rgba(var(--cream-rgb), .74);
 }
 
 .hero__actions {
@@ -315,7 +320,7 @@
   align-items: center;
   gap: clamp(1.2rem, 3vw, 2.4rem);
   padding-top: 1.8rem;
-  border-top: 1px solid rgba(201, 162, 39, .28);
+  border-top: 1px solid rgba(var(--gold-rgb), .28);
 }
 
 .hero__trust-item {
@@ -335,13 +340,13 @@
   font-size: var(--fs-micro);
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(248, 238, 221, .66);
+  color: rgba(var(--cream-rgb), .66);
 }
 
 /* On the dark hero the ghost button needs light text */
 .hero .btn--ghost {
   --btn-fg: var(--cream);
-  border-color: rgba(201, 162, 39, .5);
+  border-color: rgba(var(--gold-rgb), .5);
 }
 
 .hero .btn--ghost:hover {
@@ -363,7 +368,7 @@
   border-radius: 50%;
   background:
     conic-gradient(from calc(var(--scroll) * 220deg),
-      rgba(201, 162, 39, .75), rgba(142, 42, 68, .45), rgba(240, 220, 160, .8), rgba(201, 162, 39, .75));
+      rgba(var(--gold-rgb), .75), rgba(var(--rose-rgb), .45), rgba(240, 220, 160, .8), rgba(var(--gold-rgb), .75));
   filter: blur(3px);
   opacity: .9;
   animation: plate-spin 42s linear infinite;
@@ -382,8 +387,8 @@
   border-radius: 50%;
   background: radial-gradient(circle at 34% 26%, var(--ivory), var(--cream) 54%, #E4CDB0 100%);
   box-shadow:
-    inset 0 0 0 1px rgba(201, 162, 39, .55),
-    0 0 90px rgba(201, 162, 39, .22),
+    inset 0 0 0 1px rgba(var(--gold-rgb), .55),
+    0 0 90px rgba(var(--gold-rgb), .22),
     0 50px 110px -40px rgba(0, 0, 0, .75);
 }
 
@@ -428,6 +433,20 @@
   }
 }
 
+/* Scroll-driven polish, costing 0 KB to download: the cake grows and tilts
+   slightly as you scroll, driven by the same --scroll value that already
+   turns the gold ring. The gentle float stays on the parent so the two
+   transforms do not fight. Delete this one rule to switch it off. */
+.hero__cake>svg,
+.hero__cake>img {
+  display: block;
+  width: 100%;
+  transform:
+    scale(calc(1 + var(--scroll) * .22)) rotate(calc(var(--scroll) * -7deg));
+  transform-origin: 50% 72%;
+  will-change: transform;
+}
+
 /* Floating price/feature chips around the stage */
 .hero__chip {
   position: absolute;
@@ -439,16 +458,16 @@
   border-radius: 999px;
   /* Dark glass with a gold hairline: reads clearly against both the dark
      stage and the lit plate the chips overlap. */
-  background: linear-gradient(150deg, rgba(43, 23, 16, .94), rgba(15, 8, 5, .94));
+  background: linear-gradient(150deg, rgba(var(--cocoa-rgb), .94), rgba(var(--noir-rgb), .94));
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(201, 162, 39, .55);
+  border: 1px solid rgba(var(--gold-rgb), .55);
   box-shadow: 0 18px 38px -18px rgba(0, 0, 0, .8);
   font-size: var(--fs-micro);
   font-weight: 400;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(248, 238, 221, .9);
+  color: rgba(var(--cream-rgb), .9);
   white-space: nowrap;
   animation: chip-float 5.5s ease-in-out infinite;
 }
@@ -508,7 +527,7 @@
   transform: translateX(-50%);
   opacity: calc(1 - var(--scroll) * 2.6);
   transition: color .3s;
-  color: rgba(248, 238, 221, .6);
+  color: rgba(var(--cream-rgb), .6);
 }
 
 .hero__cue span {
@@ -520,7 +539,7 @@
 .hero__cue-track {
   width: 1px;
   height: 54px;
-  background: linear-gradient(rgba(201, 162, 39, .45), transparent);
+  background: linear-gradient(rgba(var(--gold-rgb), .45), transparent);
   position: relative;
   overflow: hidden;
 }

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — base.css
+   NM BAKERS — base.css
    Design tokens, reset, typography, utilities, buttons
    ========================================================================== */
 
@@ -15,6 +15,21 @@
   --choco: #45261A;
   --mocha: #6B3F28;
   --caramel: #A87244;
+  --dark-top: #251409;
+
+  /* ---- The same colours as raw R,G,B numbers ----
+     Needed wherever a colour is used see-through, e.g. rgba(var(--gold-rgb), .4).
+     Change these together with the colours above when you switch theme. */
+  --noir-rgb: 15, 8, 5;
+  --espresso-rgb: 23, 13, 7;
+  --cocoa-rgb: 43, 23, 16;
+  --dark-top-rgb: 37, 20, 9;
+  --gold-rgb: 201, 162, 39;
+  --gold-deep-rgb: 138, 101, 32;
+  --gold-soft-rgb: 240, 220, 160;
+  --rose-rgb: 142, 42, 68;
+  --wine-rgb: 122, 31, 53;
+  --cream-rgb: 248, 238, 221;
 
   /* ---- Metallic gold ramp ----
      A single flat gold reads as mustard. Real metal needs a dark edge, a
@@ -23,7 +38,7 @@
   --gold: #C9A227;
   --gold-mid: #DFC163;
   --gold-soft: #F0DCA0;
-  --gold-glow: rgba(201, 162, 39, .32);
+  --gold-glow: rgba(var(--gold-rgb), .32);
   --grad-gold: linear-gradient(100deg, #8A6520 0%, #C9A227 20%, #F3E3AE 47%, #C9A227 70%, #8A6520 100%);
   --grad-gold-warm: linear-gradient(120deg, #A87244 0%, #C9A227 55%, #E8CE7C 100%);
 
@@ -38,14 +53,42 @@
   --cream: #F8EEDD;
   --cream-2: #EFE0C7;
 
+  /* ---- Background photo behind the hero and every page banner ----
+     This is the default, used by any page with no picture of its own.
+     Per-page pictures are set just below, under "ONE PICTURE PER PAGE".
+     Use `none` to switch the photo off and keep the plain dark gradient. */
+  --banner-image: url('../hero-bg/bg.png');
+
+  /* How dark the tint over that photo is. Higher = darker = easier to read.
+     Drop to about .70 if you want the photo to show through more. */
+  --banner-veil: .86;
+  --hero-veil: .90;
+}
+
+/* ==========================================================================
+   ONE PICTURE PER PAGE
+   --------------------------------------------------------------------------
+   Each page can have its own background photo. Put the file in
+   assets/images/ and change the filename on that page's line below.
+
+   All four start on the same hero-bg.png, so the site looks right today.
+   Change them one at a time as your new photos are ready.
+   ========================================================================== */
+body.page-home     { --banner-image: url('../hero-bg/hero-home.png'); }
+body.page-products { --banner-image: url('../hero-bg/hero-products.png'); }
+body.page-about    { --banner-image: url('../hero-bg/hero-about.png'); }
+body.page-contact  { --banner-image: url('../hero-bg/hero-contact.png'); }
+
+:root {
+
   /* Semantic */
   --bg: var(--cream);
   --surface: var(--ivory);
   --ink: #1A0E08;
   --ink-soft: #4E3729;
   --ink-muted: #7A6252;
-  --line: rgba(43, 23, 16, .14);
-  --line-strong: rgba(43, 23, 16, .26);
+  --line: rgba(var(--cocoa-rgb), .14);
+  --line-strong: rgba(var(--cocoa-rgb), .26);
 
   /* Typography */
   --font-display: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
@@ -81,16 +124,117 @@
   --radius: 18px;
   --radius-lg: 28px;
   --radius-xl: 42px;
-  --shadow-sm: 0 2px 12px rgba(23, 13, 7, .09);
-  --shadow: 0 18px 46px -20px rgba(23, 13, 7, .36);
-  --shadow-lg: 0 40px 92px -34px rgba(23, 13, 7, .52);
-  --shadow-gold: 0 18px 44px -20px rgba(138, 101, 32, .55);
+  --shadow-sm: 0 2px 12px rgba(var(--espresso-rgb), .09);
+  --shadow: 0 18px 46px -20px rgba(var(--espresso-rgb), .36);
+  --shadow-lg: 0 40px 92px -34px rgba(var(--espresso-rgb), .52);
+  --shadow-gold: 0 18px 44px -20px rgba(var(--gold-deep-rgb), .55);
 
   /* Motion */
   --ease: cubic-bezier(.22, .61, .36, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --dur: .5s;
   --dur-slow: .9s;
+}
+
+/* ==========================================================================
+   COLOUR THEMES
+   --------------------------------------------------------------------------
+   Theme 1 (Chocolate & Gold) is everything defined above this line.
+   The three below switch on when <html> carries data-theme="...".
+
+   The floating swatch buttons in the bottom-left corner do that for you.
+   To remove that switcher before going live, delete the one line
+       <script src="assets/js/theme.js?v=18"></script>
+   from the four HTML files. The themes themselves stay available.
+   ========================================================================== */
+
+/* ---- THEME 2 — ROSE GOLD & BLUSH -------------------------------------
+   Soft, romantic, boutique. Suits bento cakes and celebration orders. */
+:root[data-theme="rose"] {
+  --noir: #150A0B;      --noir-rgb: 21, 10, 11;
+  --espresso: #1F0F12;  --espresso-rgb: 31, 15, 18;
+  --cocoa: #35191E;     --cocoa-rgb: 53, 25, 30;
+  --choco: #4E2530;
+  --mocha: #6E3A44;
+  --caramel: #A9707A;
+  --dark-top: #2A1418;  --dark-top-rgb: 42, 20, 24;
+
+  --gold-deep: #8A4A55; --gold-deep-rgb: 138, 74, 85;
+  --gold: #B76E79;      --gold-rgb: 183, 110, 121;
+  --gold-mid: #D79AA2;
+  --gold-soft: #F0CDD2; --gold-soft-rgb: 240, 205, 210;
+  --grad-gold: linear-gradient(100deg, #8A4A55 0%, #B76E79 20%, #F3D8DC 47%, #B76E79 70%, #8A4A55 100%);
+  --grad-gold-warm: linear-gradient(120deg, #A9707A 0%, #B76E79 55%, #E8B9C0 100%);
+
+  --wine: #7A2A3C;      --wine-rgb: 122, 42, 60;
+  --rose: #A8455A;      --rose-rgb: 168, 69, 90;
+  --blush: #F6E1E4;
+  --blush-deep: #E0B5BD;
+
+  --ivory: #FFFAF8;
+  --cream: #FBF0EE;     --cream-rgb: 251, 240, 238;
+  --cream-2: #F2DFDD;
+
+  --ink: #2A1216;
+  --ink-soft: #5C3A40;
+  --ink-muted: #8A6B70;
+}
+
+/* ---- THEME 3 — EMERALD & GOLD ---------------------------------------
+   Deep green with champagne gold. The most distinctive. */
+:root[data-theme="emerald"] {
+  --noir: #060F0B;      --noir-rgb: 6, 15, 11;
+  --espresso: #0B1712;  --espresso-rgb: 11, 23, 18;
+  --cocoa: #14261D;     --cocoa-rgb: 20, 38, 29;
+  --choco: #1E3A2C;
+  --mocha: #2E5240;
+  --caramel: #7E9A82;
+  --dark-top: #0F2118;  --dark-top-rgb: 15, 33, 24;
+
+  --wine: #1F6B4A;      --wine-rgb: 31, 107, 74;
+  --rose: #2A855C;      --rose-rgb: 42, 133, 92;
+  --blush: #E4EFE6;
+  --blush-deep: #C3DAC9;
+
+  --ivory: #FCFBF4;
+  --cream: #F5F1E3;     --cream-rgb: 245, 241, 227;
+  --cream-2: #E8E2CE;
+
+  --ink: #0E1A13;
+  --ink-soft: #35473C;
+  --ink-muted: #64756A;
+}
+
+/* ---- THEME 4 — BURGUNDY & CHAMPAGNE ---------------------------------
+   Rich wine red with pale champagne. Warm and festive. */
+:root[data-theme="burgundy"] {
+  --noir: #12060A;      --noir-rgb: 18, 6, 10;
+  --espresso: #1C0910;  --espresso-rgb: 28, 9, 16;
+  --cocoa: #2E121C;     --cocoa-rgb: 46, 18, 28;
+  --choco: #451B29;
+  --mocha: #63293B;
+  --caramel: #9A5F6E;
+  --dark-top: #280D18;  --dark-top-rgb: 40, 13, 24;
+
+  --gold-deep: #9A7E4A; --gold-deep-rgb: 154, 126, 74;
+  --gold: #D9C08C;      --gold-rgb: 217, 192, 140;
+  --gold-mid: #E8D6AE;
+  --gold-soft: #F7EDD6; --gold-soft-rgb: 247, 237, 214;
+  --grad-gold: linear-gradient(100deg, #9A7E4A 0%, #D9C08C 20%, #FBF4E2 47%, #D9C08C 70%, #9A7E4A 100%);
+  --grad-gold-warm: linear-gradient(120deg, #9A5F6E 0%, #D9C08C 55%, #F1E2BF 100%);
+
+  --wine: #6E1428;      --wine-rgb: 110, 20, 40;
+  --rose: #8E1E36;      --rose-rgb: 142, 30, 54;
+  --blush: #F7E4E8;
+  --blush-deep: #E3BCC5;
+
+  --ivory: #FFFBF6;
+  --cream: #F9F1E6;     --cream-rgb: 249, 241, 230;
+  --cream-2: #EFE1D0;
+
+  --ink: #241017;
+  --ink-soft: #543440;
+  --ink-muted: #856872;
 }
 
 /* --------------------------------------------------------------------------
@@ -298,7 +442,7 @@ p {
    one gradient meets the start of the next. */
 .section--dark {
   background:
-    radial-gradient(70% 60% at 50% 0%, rgba(201, 162, 39, .11), transparent 64%),
+    radial-gradient(70% 60% at 50% 0%, rgba(var(--gold-rgb), .11), transparent 64%),
     var(--espresso);
   color: var(--cream);
 }
@@ -309,7 +453,7 @@ p {
 }
 
 .section--dark .lead {
-  color: rgba(248, 238, 221, .72);
+  color: rgba(var(--cream-rgb), .72);
 }
 
 .section--dark .eyebrow {
@@ -318,7 +462,7 @@ p {
 
 .section--dark .btn--ghost {
   --btn-fg: var(--cream);
-  border-color: rgba(201, 162, 39, .5);
+  border-color: rgba(var(--gold-rgb), .5);
 }
 
 .section--dark .btn--ghost:hover {
@@ -515,7 +659,7 @@ p {
 .btn--outline-light {
   --btn-bg: transparent;
   --btn-fg: var(--cream);
-  border: 1px solid rgba(251, 244, 234, .34);
+  border: 1px solid rgba(var(--cream-rgb), .34);
 }
 
 .btn--sm {

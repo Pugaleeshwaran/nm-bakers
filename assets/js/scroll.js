@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — scroll.js
+   NM BAKERS — scroll.js
    One rAF-throttled scroll loop driving:
      · the top progress bar
      · the hero's --scroll variable (parallax, fade, rotation)

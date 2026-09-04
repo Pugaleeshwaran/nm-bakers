@@ -1,6 +1,6 @@
-# NM Bakery — Website
+# NM Bakers — Website
 
-A four-page premium website for **NM Bakery** (*Freshly Baked With Love*), built with plain
+A four-page premium website for **NM Bakers** (*Freshly Baked With Love*), built with plain
 HTML, CSS and JavaScript. No build step, no dependencies — open `index.html` and it runs.
 
 ---
@@ -89,7 +89,7 @@ Everything business-specific lives in one place: **`assets/js/data.js`**.
 window.NM_CONFIG = {
   phoneDisplay: '+91 98765 43210',   // shown on the page
   phoneRaw:     '919876543210',      // digits only, with country code (WhatsApp + tel:)
-  email:        'hello@nmbakery.in',
+  email:        'hello@nmbakers.in',
   addressLine1: 'Home Bakery Studio',
   addressLine2: 'Vellore, Tamil Nadu 632014',
   instagram:    'https://instagram.com/...',
@@ -121,6 +121,24 @@ tiles, order buttons and the WhatsApp links all read from this object.
 `.png`, `.jpg` and `.jpeg` all work. The id of any item is its `id:` field in
 `NM_PRODUCTS` (or `NM_CATEGORIES`) further down `data.js`.
 
+### Replacing the drawn illustrations with photos
+
+Some artwork on the site is drawn in code (SVG) rather than being a file. Every one
+of those can be swapped for your own photo — put a filename against its key in
+`NM_IMAGES` and the drawing is replaced:
+
+| Key | What it replaces |
+| --- | --- |
+| `hero-cake` | the big cake in the home-page hero |
+| `custom-cake` | the "Customised cakes for your occasion" panel |
+| `step-1` … `step-4` | the four "How an order works" icons |
+| `about-1` | the tall picture at the top of the About page |
+| `about-2` | the "In the pantry" picture |
+
+Leave a key blank and the drawing stays. For `hero-cake`, use a PNG with a
+**transparent background** — the cake sits on a lit plate, so a white box behind it
+will look wrong.
+
 **If your file already has a different name**, list it in the `NM_IMAGES` block at
 the top of `assets/js/data.js`:
 
@@ -136,7 +154,7 @@ affects any other card**.
 
 Nothing can break: if a file is missing or misspelt, the card falls back to its
 category picture rather than showing a broken image, and the browser console lists
-what fell back — open DevTools (F12) and look for `[NM Bakery]`.
+what fell back — open DevTools (F12) and look for `[NM Bakers]`.
 
 ### Adding or changing a product
 

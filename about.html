@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Us — NM Bakery</title>
+  <title>About Us — NM Bakers</title>
   <meta name="description"
-    content="NM Bakery is a small home bakery in Vellore baking cakes, brownies and cookies to order — premium ingredients, no preservatives, made with lots of love.">
+    content="NM Bakers is a small home bakery in Vellore baking cakes, brownies and cookies to order — premium ingredients, no preservatives, made with lots of love.">
   <meta name="theme-color" content="#170D07">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,20 +15,20 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/base.css?v=9">
-  <link rel="stylesheet" href="assets/css/layout.css?v=9">
-  <link rel="stylesheet" href="assets/css/components.css?v=9">
-  <link rel="stylesheet" href="assets/css/animations.css?v=9">
-  <link rel="stylesheet" href="assets/css/pages.css?v=9">
+  <link rel="stylesheet" href="assets/css/base.css?v=18">
+  <link rel="stylesheet" href="assets/css/layout.css?v=18">
+  <link rel="stylesheet" href="assets/css/components.css?v=18">
+  <link rel="stylesheet" href="assets/css/animations.css?v=18">
+  <link rel="stylesheet" href="assets/css/pages.css?v=18">
 </head>
 
-<body class="has-dark-hero">
+<body class="has-dark-hero page-about">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container">
-      <a class="brand" href="index.html" aria-label="NM Bakery home">
+      <a class="brand" href="index.html" aria-label="NM Bakers home">
         <img src="./assets/images/logo.png" class="mainlogo" alt="">
       </a>
 
@@ -74,7 +74,7 @@
         <span class="eyebrow is-centered" data-reveal="fade">Our story</span>
         <h1 data-split>Freshly baked,<br>with love</h1>
         <p class="lead" data-reveal="up" data-delay="300">
-          NM Bakery began with one oven, a hand whisk and a stubborn belief that
+          NM Bakers began with one oven, a hand whisk and a stubborn belief that
           a homemade cake should never taste like a shop-bought one.
         </p>
         <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -110,7 +110,7 @@
             <p data-reveal="up" data-delay="180" style="color:var(--ink-soft);font-size:var(--fs-small)">
               We never set out to run a bakery. We set out to make the kind of cake you
               remember from childhood — soft, honest, not too sweet, and clearly made by
-              someone who cared. When enough people asked where to buy one, NM Bakery
+              someone who cared. When enough people asked where to buy one, NM Bakers
               got a name.
             </p>
             <p data-reveal="up" data-delay="230" style="color:var(--ink-soft);font-size:var(--fs-small)">
@@ -373,7 +373,7 @@
             </li>
             <li class="footer__contact-item">
               <span data-icon="mail"></span>
-              <a data-link="mail" href="#"><span data-config="email">hello@nmbakery.in</span></a>
+              <a data-link="mail" href="#"><span data-config="email">hello@nmbakers.in</span></a>
             </li>
             <li class="footer__contact-item">
               <span data-icon="pin"></span>
@@ -390,7 +390,7 @@
       <img class="footer__watermark" src="./assets/images/logo.png" aria-hidden="true"></img>
 
       <div class="footer__bar">
-        <span>&copy; <span data-year>2026</span> NM Bakery. All rights reserved.</span>
+        <span>&copy; <span data-year>2026</span> NM Bakers. All rights reserved.</span>
         <span>Freshly baked with love &middot; Vellore</span>
       </div>
     </div>
@@ -401,17 +401,29 @@
     <span>Order now</span>
   </a>
 
-  <script src="assets/js/data.js?v=9"></script>
-  <script src="assets/js/visuals.js?v=9"></script>
-  <script src="assets/js/scroll.js?v=9"></script>
-  <script src="assets/js/app.js?v=9"></script>
+  <script src="assets/js/data.js?v=18"></script>
+  <script src="assets/js/visuals.js?v=18"></script>
+  <script src="assets/js/scroll.js?v=18"></script>
+  <script src="assets/js/app.js?v=18"></script>
+  <!-- Colour-theme switcher (a deciding tool) — delete this line to remove it -->
+  <script src="assets/js/theme.js?v=18"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (!window.NM_ART) return;
       var a1 = document.getElementById('aboutArt1');
       var a2 = document.getElementById('aboutArt2');
-      if (a1) a1.innerHTML = window.NM_ART.get('bento', ['#EBC4CA', '#BE6E85']);
-      if (a2) a2.innerHTML = window.NM_ART.get('cookie', ['#C08A4E', '#8A5A2E']);
+      // Name a file for 'about-1' / 'about-2' in NM_IMAGES (data.js) to use
+      // your own photo, or drop in about-1.png. Until then it falls back to
+      // the category picture. Either way it fills the frame.
+      function setArt(el, key, alt, categoryFallback) {
+        if (!el) return;
+        el.innerHTML = window.NM_ART.photo(key, alt, categoryFallback);
+        var frame = el.closest('.frame');
+        if (frame) frame.classList.add('frame--photo');
+      }
+
+      setArt(a1, 'about-1', 'A bento cake boxed and ready', 'bento');
+      setArt(a2, 'about-2', 'Cookies fresh from the oven', 'cookies');
     });
   </script>
 </body>

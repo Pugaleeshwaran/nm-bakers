@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — data.js
+   NM BAKERS — data.js
    Single source of truth for business details and the full menu.
    Edit values here and every page updates automatically.
    Loaded as a classic script so the site works from file:// as well.
@@ -10,12 +10,12 @@
    TODO: replace the placeholder phone / email / address with the real ones.
    -------------------------------------------------------------------------- */
 window.NM_CONFIG = {
-  name: 'NM Bakery',
+  name: 'NM Bakers',
   tagline: 'Freshly Baked With Love',
   motto: 'Life is sweeter with home baked goodies',
   phoneDisplay: '+91 98765 43210',
   phoneRaw: '919876543210',          // digits only, with country code — used for tel: & WhatsApp
-  email: 'hello@nmbakery.in',
+  email: 'hello@nmbakers.in',
   addressLine1: 'Home Bakery Studio',
   addressLine2: 'Vellore, Tamil Nadu 632014',
   instagram: 'https://instagram.com/',
@@ -54,6 +54,16 @@ window.NM_IMAGES = {
      Put a filename here to use your own photo instead. */
   'hero-cake':                 '',   // the big cake in the hero
   'custom-cake':               '',   // the "Customised cakes" panel
+
+  /* ---- The four "How an order works" steps (home page) ---- */
+  'step-1':                    '',   // you tell us the occasion
+  'step-2':                    '',   // we shop and mix that day
+  'step-3':                    '',   // baked in small batches
+  'step-4':                    '',   // finished and sealed
+
+  /* ---- About page pictures ---- */
+  'about-1':                   '',   // top of the About page
+  'about-2':                   '',   // "In the pantry" section
 
   /* ---- Category cards (home page) ---- */
   'cakes':                     'cake.png',
@@ -155,7 +165,7 @@ window.NM_CATEGORIES = [
 ];
 
 /* --------------------------------------------------------------------------
-   Products — transcribed from the NM Bakery menu card
+   Products — transcribed from the NM Bakers menu card
    -------------------------------------------------------------------------- */
 window.NM_PRODUCTS = [
   /* ---- Cakes (₹ / ½ kg) ---- */

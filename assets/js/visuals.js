@@ -1,5 +1,5 @@
 /* ==========================================================================
-   NM BAKERY — visuals.js
+   NM BAKERS — visuals.js
    Hand-built SVG artwork and icon set.
    Every illustration is generated from a product's `tone` colours so the
    whole catalogue looks like one designed system without needing photos.
@@ -29,35 +29,35 @@
       var c = tones(tone);
       return '' +
 
-        '<img src="./assets/images/cake.png" alt="Chocolate cake" class="category-cake-img" />';
+        '<img src="./assets/images/cake.png" alt="Cake" class="category-cake-img" />';
     },
 
     /* Bento cake in an open kraft box, three-quarter top view */
     bento: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/b-cake.png" alt="Chocolate cake" class="category-cake-img" />';
+        '<img src="./assets/images/b-cake.png" alt="Bento cake" class="category-cake-img" />';
     },
 
     /* Stack of brownie squares */
     brownie: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/browine.png" alt="Chocolate cake" class="category-cake-img" />';
+        '<img src="./assets/images/browine.png" alt="Brownies" class="category-cake-img" />';
     },
 
     /* Cookie with chocolate chips */
     cookie: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/cookie.png" alt="Chocolate cake" class="category-cake-img" />';
+        '<img src="./assets/images/cookie.png" alt="Cookies" class="category-cake-img" />';
     },
 
     /* Tea-cake loaf with cut slices */
     loaf: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/teacake.png" alt="Chocolate cake" class="category-cake-img" />';
+        '<img src="./assets/images/teacake.png" alt="Tea cake" class="category-cake-img" />';
     },
 
     /* Large showpiece cake for the hero stage */
@@ -302,7 +302,7 @@
       if (!reported[id]) {
         reported[id] = true;
         if (window.console && console.info) {
-          console.info('[NM Bakery] No picture found for "' + id +
+          console.info('[NM Bakers] No picture found for "' + id +
             '" — falling back. Add ' + id + '.png to assets/images/ to fix it.');
         }
       }
@@ -311,7 +311,7 @@
       img.removeAttribute('data-nm-next');
       img.style.display = 'none';
       if (window.console && console.warn) {
-        console.warn('[NM Bakery] No picture at all for "' + id + '".');
+        console.warn('[NM Bakers] No picture at all for "' + id + '".');
       }
     }
   }, true);
