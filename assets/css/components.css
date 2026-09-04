@@ -150,24 +150,32 @@
 /* --------------------------------------------------------------------------
    3. Product card
    -------------------------------------------------------------------------- */
+/* Photographs on product and category cards. `.card-photo` is emitted by
+   NM_ART.photo(); `.category-cake-img` is kept as an alias for any older
+   markup that still uses it. */
+.card-photo,
 .category-cake-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: inherit;
-}
-
-.category-card__art .category-cake-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
   transition: transform .8s var(--ease-out);
 }
 
-.category-card:hover .category-card__art .category-cake-img {
-  transform: scale(1.07);
+.category-card:hover .card-photo,
+.category-card:hover .category-cake-img,
+.product-card:hover .card-photo {
+  transform: scale(1.06);
+}
+
+/* The big home-page pictures are shown whole, not cropped to a box */
+.hero__cake .card-photo,
+.custom-panel__art .card-photo {
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
 }
 
 .product-card {

@@ -104,6 +104,40 @@ tiles, order buttons and the WhatsApp links all read from this object.
 > The phone number, email and address currently in the file are **placeholders**.
 > Replace them with the real ones before sharing the site.
 
+### Adding or changing a picture
+
+**The easy way — no code at all.** Name the file after the item's id and drop it in
+`assets/images/`. It is picked up on the next page load.
+
+| Product | Name the file |
+| --- | --- |
+| Blueberry Cake | `blueberry-cake.png` |
+| White Forest Cake | `white-forest-cake.png` |
+| Chocolate Bento Cake | `chocolate-bento.png` |
+| Red Velvet Bento Cake | `red-velvet-bento.png` |
+| Customised Bento Cake | `custom-bento.png` |
+| Kinder Brownie | `kinder-brownie.png` |
+
+`.png`, `.jpg` and `.jpeg` all work. The id of any item is its `id:` field in
+`NM_PRODUCTS` (or `NM_CATEGORIES`) further down `data.js`.
+
+**If your file already has a different name**, list it in the `NM_IMAGES` block at
+the top of `assets/js/data.js`:
+
+```js
+window.NM_IMAGES = {
+  'red-velvet-cake': 'red-velvert.png',   // any filename you like
+  'blueberry-cake':  '',                  // blank = look for blueberry-cake.png
+};
+```
+
+Each card resolves its own picture from its own id, so **changing one photo never
+affects any other card**.
+
+Nothing can break: if a file is missing or misspelt, the card falls back to its
+category picture rather than showing a broken image, and the browser console lists
+what fell back — open DevTools (F12) and look for `[NM Bakery]`.
+
 ### Adding or changing a product
 
 Add an object to `window.NM_PRODUCTS` in the same file:

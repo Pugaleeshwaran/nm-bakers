@@ -30,6 +30,74 @@ window.NM_CONFIG = {
 };
 
 /* --------------------------------------------------------------------------
+   PICTURES  —  the only place you need to touch to add or change a photo
+   --------------------------------------------------------------------------
+   Put your image files in the assets/images/ folder, then either:
+
+   1. EASIEST — name the file after the item's id and change nothing here.
+        blueberry-cake.png   ->   Blueberry Cake
+        nuts-brownie.jpg     ->   Nuts Brownie
+      .png, .jpg and .jpeg are all tried automatically.
+
+   2. Or, if your file already has a different name, just point at it below.
+
+   Anything with no picture of its own falls back to its category photo, so a
+   missing or misspelt filename can never break a card or show a broken image.
+   Open the browser console to see a list of anything that fell back.
+   -------------------------------------------------------------------------- */
+window.NM_IMAGE_BASE = 'assets/images/';
+
+window.NM_IMAGES = {
+
+  /* ---- Big pictures on the home page ----
+     Leave blank to keep the hand-drawn illustration.
+     Put a filename here to use your own photo instead. */
+  'hero-cake':                 '',   // the big cake in the hero
+  'custom-cake':               '',   // the "Customised cakes" panel
+
+  /* ---- Category cards (home page) ---- */
+  'cakes':                     'cake.png',
+  'bento':                     'b-cake.png',
+  'brownies':                  'browine.png',
+  'cookies':                   'cookie.png',
+  'teacakes':                  'teacake.png',
+
+  /* ---- Cakes ---- */
+  'vanilla-cake':              'vennila.png',
+  'chocolate-cake':            'choco.jpg',
+  'black-forest-cake':         'black-forest.jpg',
+  'white-forest-cake':         '',   // add white-forest-cake.png to assets/images/ and it appears automatically
+  'red-velvet-cake':           'red-velvert.png',
+  'mango-cake':                'mongo.png',
+  'rose-milk-cake':            'rosemink.png',
+  'blueberry-cake':            '',   // add blueberry-cake.png to assets/images/ and it appears automatically
+  'coffee-tres-leches':        'coffe.png',
+
+  /* ---- Bento cakes ---- */
+  'vanilla-bento':             'bendo-ven.png',
+  'chocolate-bento':           '',   // add chocolate-bento.png to assets/images/ and it appears automatically
+  'red-velvet-bento':          '',   // add red-velvet-bento.png to assets/images/ and it appears automatically
+  'custom-bento':              '',   // add custom-bento.png to assets/images/ and it appears automatically
+
+  /* ---- Brownies ---- */
+  'classic-brownie':           'classic-brownie.png',
+  'nuts-brownie':              'nut-brownie.png',
+  'nutella-brownie':           'nutella-brownie.png',
+  'kinder-brownie':            '',   // add kinder-brownie.png to assets/images/ and it appears automatically
+
+  /* ---- Cookies ---- */
+  'choco-chip-cookies':        'chochip-cookie.png',
+  'double-chocolate-cookies':  'double-cholate-cookie.png',
+  'butter-cookies':            'butter-cookie.png',
+
+  /* ---- Tea cakes & others ---- */
+  'tea-cake-plain':            'plance-tea.png',
+  'marble-cake':               'Marble-Cake.png',
+  'chocolate-tea-cake':        'choco-tea-cake.png',
+  'dry-fruit-cake':            'dry-fruit-tea-cake.png',
+};
+
+/* --------------------------------------------------------------------------
    Categories
    `tone` drives the illustrated artwork colours for each product card.
    -------------------------------------------------------------------------- */

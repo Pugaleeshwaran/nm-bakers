@@ -187,7 +187,9 @@
       '<article class="product-card" data-reveal="rise">' +
         '<div class="product-card__art" style="background:' + ART.toneBackground(product.tone) + '">' +
           badge +
-          ART.forProduct(product) +
+          // each product resolves its OWN picture from its id — see the
+          // PICTURES block at the top of data.js
+          ART.photo(product.id, product.name, product.category) +
         '</div>' +
         '<div class="product-card__body">' +
           '<p class="product-card__cat">' + esc(cat ? cat.name : '') + '</p>' +
@@ -210,7 +212,7 @@
       '<a class="category-card" href="products.html#' + cat.id + '" data-reveal="rise">' +
         '<div class="category-card__art" style="background:' + ART.toneBackground(cat.tone) + '">' +
           '<span class="category-card__count">' + countIn(cat.id) + ' items</span>' +
-          ART.get(cat.art, cat.tone) +
+          ART.photo(cat.id, cat.name) +
         '</div>' +
         '<h3>' + esc(cat.name) + '</h3>' +
         '<p>' + esc(cat.blurb) + '</p>' +
@@ -225,8 +227,16 @@
      5. Home page
      ------------------------------------------------------------------------ */
   function renderHome() {
+    // Big home-page artwork: a photo if one is named in NM_IMAGES,
+    // otherwise the hand-drawn illustration.
+    var IMG = window.NM_IMAGES || {};
+
     var heroCake = $('#heroCake');
-    if (heroCake) heroCake.innerHTML = ART.get('hero');
+    if (heroCake) {
+      heroCake.innerHTML = IMG['hero-cake']
+        ? ART.photo('hero-cake', CFG.name + ' signature cake')
+        : ART.get('hero');
+    }
 
     var catGrid = $('#categoryGrid');
     if (catGrid) {
@@ -290,7 +300,11 @@
     }
 
     var customArt = $('#customArt');
-    if (customArt) customArt.innerHTML = ART.get('custom');
+    if (customArt) {
+      customArt.innerHTML = IMG['custom-cake']
+        ? ART.photo('custom-cake', 'Customised cake')
+        : ART.get('custom');
+    }
   }
 
   /* ------------------------------------------------------------------------

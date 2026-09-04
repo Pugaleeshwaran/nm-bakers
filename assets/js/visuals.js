@@ -57,7 +57,7 @@
     loaf: function (tone) {
       var c = tones(tone);
       return '' +
-      '<img src="./assets/images/teacake.png" alt="Chocolate cake" class="category-cake-img" />';
+        '<img src="./assets/images/teacake.png" alt="Chocolate cake" class="category-cake-img" />';
     },
 
     /* Large showpiece cake for the hero stage */
@@ -207,7 +207,30 @@
      ------------------------------------------------------------------------ */
   window.NM_ART = {
 
-    /** Artwork for a product, chosen from its category. */
+    /**
+     * A real photograph for one item. Each card gets its own <img> built
+     * from that item's own id, so changing one picture never touches
+     * another card.
+     *
+     * Sources are tried in order until one loads:
+     *   1. the filename listed in NM_IMAGES for this id
+     *   2. <id>.png / <id>.jpg / <id>.jpeg   (just drop the file in)
+     *   3. the category's picture             (so nothing ever breaks)
+     */
+    photo: function (id, alt, categoryId) {
+      var list = imageCandidates(id, categoryId);
+      if (!list.length) return '';
+      return '<img src="' + list[0] + '"' +
+        ' alt="' + String(alt || '').replace(/"/g, '&quot;') + '"' +
+        ' loading="lazy" decoding="async" class="card-photo"' +
+        ' data-nm-id="' + id + '"' +
+        ' data-nm-next="' + list.slice(1).join('|') + '">';
+    },
+
+    /** The ordered list of files that could supply this item's picture. */
+    candidates: function (id, categoryId) { return imageCandidates(id, categoryId); },
+
+    /** Fallback artwork for an item with no photo of its own. */
     forProduct: function (product) {
       var map = {
         cakes: 'cake', bento: 'bento', brownies: 'brownie',
@@ -236,6 +259,62 @@
 
     icons: ICONS
   };
+
+  /* ------------------------------------------------------------------------
+     Picture resolution + never-broken fallback
+     ------------------------------------------------------------------------ */
+  function imageCandidates(id, categoryId) {
+    var base = window.NM_IMAGE_BASE || 'assets/images/';
+    var map = window.NM_IMAGES || {};
+    var out = [];
+
+    function push(v) { if (v && out.indexOf(v) === -1) out.push(v); }
+
+    // 1. an explicit filename wins, and costs no extra requests
+    if (map[id]) push(base + map[id]);
+    // 2. otherwise look for a file named after the id
+    push(base + id + '.png');
+    push(base + id + '.jpg');
+    push(base + id + '.jpeg');
+    // 3. last resort: the category picture, so a card is never empty
+    if (categoryId && categoryId !== id) {
+      if (map[categoryId]) push(base + map[categoryId]);
+      push(base + categoryId + '.png');
+      push(base + categoryId + '.jpg');
+    }
+    return out;
+  }
+
+  /* Errors don't bubble, but they can be caught in the capture phase — one
+     listener therefore covers every card, including ones rendered later by
+     the products filter. */
+  var reported = {};
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== 'IMG' || !img.hasAttribute('data-nm-next')) return;
+
+    var next = (img.getAttribute('data-nm-next') || '').split('|').filter(Boolean);
+    var id = img.getAttribute('data-nm-id') || '';
+
+    if (next.length) {
+      img.setAttribute('data-nm-next', next.slice(1).join('|'));
+      img.src = next[0];
+      if (!reported[id]) {
+        reported[id] = true;
+        if (window.console && console.info) {
+          console.info('[NM Bakery] No picture found for "' + id +
+            '" — falling back. Add ' + id + '.png to assets/images/ to fix it.');
+        }
+      }
+    } else {
+      // nothing left to try: hide the broken icon rather than show it
+      img.removeAttribute('data-nm-next');
+      img.style.display = 'none';
+      if (window.console && console.warn) {
+        console.warn('[NM Bakery] No picture at all for "' + id + '".');
+      }
+    }
+  }, true);
 
   function hexToRgba(hex, alpha) {
     var h = String(hex).replace('#', '');
