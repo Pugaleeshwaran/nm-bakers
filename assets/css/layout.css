@@ -756,10 +756,22 @@ body.nav-open {
 
 @media (max-width: 520px) {
   .floating-order {
-    padding: .7rem;
+    padding: .55rem;
   }
 
-  .floating-order span {
+  /* Hide only the "Order now" label — NOT the icon, which is also a <span>.
+     A bare `.floating-order span` rule hid both and left an empty circle. */
+  .floating-order>span:not(.floating-order__icon) {
     display: none;
+  }
+
+  .floating-order__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-order__icon svg {
+    width: 22px;
+    height: 22px;
   }
 }

@@ -417,13 +417,26 @@
   min-width: 168px;
 }
 
+/* The magnifier is absolutely positioned, so the flex `align-items: center`
+   above does not reach it — without an explicit top it fell back to its
+   static position and sat low. Pin it to the true vertical centre. */
 .search-field svg {
   position: absolute;
   left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   width: 16px;
   height: 16px;
+  /* the global `svg { max-width: 100% }` reset resolves against the field,
+     which collapses this icon to nothing if the field is ever 0 wide */
+  max-width: none;
   color: var(--ink-muted);
   pointer-events: none;
+}
+
+/* the wrapper span the icon is injected into must not add its own box */
+.search-field>span[data-icon] {
+  display: contents;
 }
 
 .search-field input {
@@ -456,14 +469,19 @@
     gap: .7rem;
     padding: .7rem;
     border-radius: var(--radius-lg);
+    /* safety net: nothing may spill out of the rounded bar */
+    overflow: hidden;
   }
 
+  /* In a COLUMN flex container the tab row's min-content width (all six tabs
+     side by side) pushed it far wider than the bar, dragging the search field
+     out of view with it. An explicit width pins both to the bar; the tabs
+     then scroll inside themselves instead of overflowing. */
   .filter-tabs {
     flex-wrap: nowrap;
     overflow-x: auto;
+    width: 100%;
     min-width: 0;
-    /* without this the row refuses to shrink and
-                                widens the whole page instead of scrolling */
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -478,7 +496,14 @@
 
   .search-field {
     margin-left: 0;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .search-field input {
+    width: 100%;
+    min-width: 0;
   }
 }
 
