@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pugaleeshwaran.github.io/nm-bakers/sitemap.xml

@@ -57,7 +57,7 @@
      This is the default, used by any page with no picture of its own.
      Per-page pictures are set just below, under "ONE PICTURE PER PAGE".
      Use `none` to switch the photo off and keep the plain dark gradient. */
-  --banner-image: url('../hero-bg/bg.png');
+  --banner-image: url('../hero-bg/bg.webp');
 
   /* How dark the tint over that photo is. Higher = darker = easier to read.
      Drop to about .70 if you want the photo to show through more. */
@@ -71,13 +71,13 @@
    Each page can have its own background photo. Put the file in
    assets/images/ and change the filename on that page's line below.
 
-   All four start on the same hero-bg.png, so the site looks right today.
+   All four start on the same hero-bg.webp, so the site looks right today.
    Change them one at a time as your new photos are ready.
    ========================================================================== */
-body.page-home     { --banner-image: url('../hero-bg/hero-home.png'); }
-body.page-products { --banner-image: url('../hero-bg/hero-products.png'); }
-body.page-about    { --banner-image: url('../hero-bg/hero-about.png'); }
-body.page-contact  { --banner-image: url('../hero-bg/hero-contact.png'); }
+body.page-home     { --banner-image: url('../hero-bg/hero-home.webp'); }
+body.page-products { --banner-image: url('../hero-bg/hero-products.webp'); }
+body.page-about    { --banner-image: url('../hero-bg/hero-about.webp'); }
+body.page-contact  { --banner-image: url('../hero-bg/hero-contact.webp'); }
 
 :root {
 

@@ -29,35 +29,35 @@
       var c = tones(tone);
       return '' +
 
-        '<img src="./assets/images/cake.png" alt="Cake" class="category-cake-img" />';
+        '<img src="./assets/images/cake.webp" alt="Cake" class="category-cake-img" />';
     },
 
     /* Bento cake in an open kraft box, three-quarter top view */
     bento: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/b-cake.png" alt="Bento cake" class="category-cake-img" />';
+        '<img src="./assets/images/b-cake.webp" alt="Bento cake" class="category-cake-img" />';
     },
 
     /* Stack of brownie squares */
     brownie: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/browine.png" alt="Brownies" class="category-cake-img" />';
+        '<img src="./assets/images/browine.webp" alt="Brownies" class="category-cake-img" />';
     },
 
     /* Cookie with chocolate chips */
     cookie: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/cookie.png" alt="Cookies" class="category-cake-img" />';
+        '<img src="./assets/images/cookie.webp" alt="Cookies" class="category-cake-img" />';
     },
 
     /* Tea-cake loaf with cut slices */
     loaf: function (tone) {
       var c = tones(tone);
       return '' +
-        '<img src="./assets/images/teacake.png" alt="Tea cake" class="category-cake-img" />';
+        '<img src="./assets/images/teacake.webp" alt="Tea cake" class="category-cake-img" />';
     },
 
     /* Large showpiece cake for the hero stage */
@@ -214,7 +214,7 @@
      *
      * Sources are tried in order until one loads:
      *   1. the filename listed in NM_IMAGES for this id
-     *   2. <id>.png / <id>.jpg / <id>.jpeg   (just drop the file in)
+     *   2. <id>.webp / .png / .jpg / .jpeg    (just drop the file in)
      *   3. the category's picture             (so nothing ever breaks)
      */
     photo: function (id, alt, categoryId) {
@@ -273,12 +273,14 @@
     // 1. an explicit filename wins, and costs no extra requests
     if (map[id]) push(base + map[id]);
     // 2. otherwise look for a file named after the id
+    push(base + id + '.webp');
     push(base + id + '.png');
     push(base + id + '.jpg');
     push(base + id + '.jpeg');
     // 3. last resort: the category picture, so a card is never empty
     if (categoryId && categoryId !== id) {
       if (map[categoryId]) push(base + map[categoryId]);
+      push(base + categoryId + '.webp');
       push(base + categoryId + '.png');
       push(base + categoryId + '.jpg');
     }
@@ -303,7 +305,7 @@
         reported[id] = true;
         if (window.console && console.info) {
           console.info('[NM Bakers] No picture found for "' + id +
-            '" — falling back. Add ' + id + '.png to assets/images/ to fix it.');
+            '" — falling back. Add ' + id + '.webp to assets/images/ to fix it.');
         }
       }
     } else {

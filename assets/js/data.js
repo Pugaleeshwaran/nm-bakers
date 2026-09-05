@@ -16,8 +16,8 @@ window.NM_CONFIG = {
   phoneDisplay: '+91 98765 43210',
   phoneRaw: '919876543210',          // digits only, with country code — used for tel: & WhatsApp
   email: 'hello@nmbakers.in',
-  addressLine1: 'Home Bakery Studio',
-  addressLine2: 'Madurai, Tamil Nadu 632014',
+  addressLine1: 'Home Bakery Studio, Goripalayam',
+  addressLine2: 'Madurai, Tamil Nadu 625002',
   instagram: 'https://instagram.com/',
   facebook: 'https://facebook.com/',
   hours: [
@@ -35,9 +35,9 @@ window.NM_CONFIG = {
    Put your image files in the assets/images/ folder, then either:
 
    1. EASIEST — name the file after the item's id and change nothing here.
-        blueberry-cake.png   ->   Blueberry Cake
-        nuts-brownie.jpg     ->   Nuts Brownie
-      .png, .jpg and .jpeg are all tried automatically.
+        blueberry-cake.webp  ->   Blueberry Cake
+        nuts-brownie.webp    ->   Nuts Brownie
+      .webp, .png, .jpg and .jpeg are all tried automatically.
 
    2. Or, if your file already has a different name, just point at it below.
 
@@ -57,13 +57,13 @@ window.NM_IMAGES = {
      lines freely — any number works. */
   'hero-cake': [
 
-    'head-coco.png',
-    'head-red.png',
-    'head-bendo.png',
-    'head-bc.png',
+    'head-coco.webp',
+    'head-red.webp',
+    'head-bendo.webp',
+    'head-bc.webp',
   ],
-  'kitchen': 'white-forst.png',   // "A bakery the size of one family kitchen" on the home page
-  'custom-cake': 'offcation-cake.png',   // the "Customised cakes" panel
+  'kitchen': 'white-forst.webp',   // "A bakery the size of one family kitchen" on the home page
+  'custom-cake': 'offcation-cake.webp',   // the "Customised cakes" panel
 
   /* ---- The four "How an order works" steps (home page) ---- */
   'step-1': '',   // you tell us the occasion
@@ -76,45 +76,45 @@ window.NM_IMAGES = {
   'about-2': '',   // "In the pantry" section
 
   /* ---- Category cards (home page) ---- */
-  'cakes': 'cake.png',
-  'bento': 'b-cake.png',
-  'brownies': 'browine.png',
-  'cookies': 'cookie.png',
-  'teacakes': 'teacake.png',
+  'cakes': 'cake.webp',
+  'bento': 'b-cake.webp',
+  'brownies': 'browine.webp',
+  'cookies': 'cookie.webp',
+  'teacakes': 'teacake.webp',
 
   /* ---- Cakes ---- */
-  'vanilla-cake': 'vennila.png',
-  'chocolate-cake': 'choco.png',
-  'black-forest-cake': 'black-forest.jpg',
-  'white-forest-cake': 'white-forst.png',   // add white-forest-cake.png to assets/images/ and it appears automatically
-  'red-velvet-cake': 'red-velvert.png',
-  'mango-cake': 'mongo.png',
-  'rose-milk-cake': 'rosemink.png',
-  'blueberry-cake': 'blueberry.png',   // add blueberry-cake.png to assets/images/ and it appears automatically
-  'coffee-tres-leches': 'coffe.png',
+  'vanilla-cake': 'vennila.webp',
+  'chocolate-cake': 'choco.webp',
+  'black-forest-cake': 'black-forest.webp',
+  'white-forest-cake': 'white-forst.webp',   // add white-forest-cake.webp to assets/images/ and it appears automatically
+  'red-velvet-cake': 'red-velvert.webp',
+  'mango-cake': 'mongo.webp',
+  'rose-milk-cake': 'rosemink.webp',
+  'blueberry-cake': 'blueberry.webp',   // add blueberry-cake.webp to assets/images/ and it appears automatically
+  'coffee-tres-leches': 'coffe.webp',
 
   /* ---- Bento cakes ---- */
-  'vanilla-bento': 'bendo-ven.png',
-  'chocolate-bento': 'bendo-cho.png',   // add chocolate-bento.png to assets/images/ and it appears automatically
-  'red-velvet-bento': 'red-v-bendo.png',   // add red-velvet-bento.png to assets/images/ and it appears automatically
-  'custom-bento': 'costom-bento.png',   // add custom-bento.png to assets/images/ and it appears automatically
+  'vanilla-bento': 'bendo-ven.webp',
+  'chocolate-bento': 'bendo-cho.webp',   // add chocolate-bento.webp to assets/images/ and it appears automatically
+  'red-velvet-bento': 'red-v-bendo.webp',   // add red-velvet-bento.webp to assets/images/ and it appears automatically
+  'custom-bento': 'costom-bento.webp',   // add custom-bento.webp to assets/images/ and it appears automatically
 
   /* ---- Brownies ---- */
-  'classic-brownie': 'classic-brownie.png',
-  'nuts-brownie': 'nut-brownie.png',
-  'nutella-brownie': 'nutella-brownie.png',
-  'kinder-brownie': 'kinder-brownie.png',   // add kinder-brownie.png to assets/images/ and it appears automatically
+  'classic-brownie': 'classic-brownie.webp',
+  'nuts-brownie': 'nut-brownie.webp',
+  'nutella-brownie': 'nutella-brownie.webp',
+  'kinder-brownie': 'kinder-brownie.webp',   // add kinder-brownie.webp to assets/images/ and it appears automatically
 
   /* ---- Cookies ---- */
-  'choco-chip-cookies': 'chochip-cookie.png',
-  'double-chocolate-cookies': 'double-cholate-cookie.png',
-  'butter-cookies': 'butter-cookie.png',
+  'choco-chip-cookies': 'chochip-cookie.webp',
+  'double-chocolate-cookies': 'double-cholate-cookie.webp',
+  'butter-cookies': 'butter-cookie.webp',
 
   /* ---- Tea cakes & others ---- */
-  'tea-cake-plain': 'plance-tea.png',
-  'marble-cake': 'Marble-Cake.png',
-  'chocolate-tea-cake': 'choco-tea-cake.png',
-  'dry-fruit-cake': 'dry-fruit-tea-cake.png',
+  'tea-cake-plain': 'plance-tea.webp',
+  'marble-cake': 'Marble-Cake.webp',
+  'chocolate-tea-cake': 'choco-tea-cake.webp',
+  'dry-fruit-cake': 'dry-fruit-tea-cake.webp',
 };
 
 /* --------------------------------------------------------------------------
@@ -326,7 +326,7 @@ window.NM_VALUES = [
    -------------------------------------------------------------------------- */
 window.NM_TESTIMONIALS = [
   {
-    quote: 'The red velvet was the softest I have had in Vellore — and the cream cheese was not sickly sweet. It disappeared in one evening.',
+    quote: 'The red velvet was the softest I have had in Madurai — and the cream cheese was not sickly sweet. It disappeared in one evening.',
     name: 'Aarthi R.', meta: 'Birthday order'
   },
   {

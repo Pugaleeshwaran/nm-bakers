@@ -1,0 +1,8 @@
+# Local-only folders
+_originals/
+
+# Editor / tooling
+.claude/
+.vscode/
+.DS_Store
+Thumbs.db
