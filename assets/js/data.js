@@ -52,7 +52,17 @@ window.NM_IMAGES = {
   /* ---- Big pictures on the home page ----
      Leave blank to keep the hand-drawn illustration.
      Put a filename here to use your own photo instead. */
-  'hero-cake': '',   // the big cake in the hero
+  /* The big cake in the hero. ONE filename shows a still picture; a LIST of
+     filenames fades from one to the next every 5 seconds. Add or remove
+     lines freely — any number works. */
+  'hero-cake': [
+
+    'head-coco.png',
+    'head-red.png',
+    'head-bendo.png',
+    'head-bc.png',
+  ],
+  'kitchen': 'white-forst.png',   // "A bakery the size of one family kitchen" on the home page
   'custom-cake': 'offcation-cake.png',   // the "Customised cakes" panel
 
   /* ---- The four "How an order works" steps (home page) ---- */

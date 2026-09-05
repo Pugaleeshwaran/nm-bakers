@@ -20,11 +20,11 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/base.css?v=31">
-  <link rel="stylesheet" href="assets/css/layout.css?v=31">
-  <link rel="stylesheet" href="assets/css/components.css?v=31">
-  <link rel="stylesheet" href="assets/css/animations.css?v=31">
-  <link rel="stylesheet" href="assets/css/pages.css?v=31">
+  <link rel="stylesheet" href="assets/css/base.css?v=35">
+  <link rel="stylesheet" href="assets/css/layout.css?v=35">
+  <link rel="stylesheet" href="assets/css/components.css?v=35">
+  <link rel="stylesheet" href="assets/css/animations.css?v=35">
+  <link rel="stylesheet" href="assets/css/pages.css?v=35">
 </head>
 
 <body class="has-dark-hero page-home">
@@ -442,17 +442,23 @@
     <span>Order now</span>
   </a>
 
-  <script src="assets/js/data.js?v=31"></script>
-  <script src="assets/js/visuals.js?v=31"></script>
-  <script src="assets/js/scroll.js?v=31"></script>
-  <script src="assets/js/app.js?v=31"></script>
+  <script src="assets/js/data.js?v=35"></script>
+  <script src="assets/js/visuals.js?v=35"></script>
+  <script src="assets/js/scroll.js?v=35"></script>
+  <script src="assets/js/app.js?v=35"></script>
   <!-- Colour-theme switcher (a deciding tool) — delete this line to remove it -->
-  <script src="assets/js/theme.js?v=31"></script>
+  <script src="assets/js/theme.js?v=35"></script>
   <script>
     // Home-page-only artwork
     document.addEventListener('DOMContentLoaded', function () {
+      // Name a file for 'kitchen' in NM_IMAGES (data.js) to change this
+      // picture, or drop in kitchen.png. Falls back to the Cakes photo.
       var teaser = document.getElementById('storyTeaserArt');
-      if (teaser && window.NM_ART) teaser.innerHTML = window.NM_ART.get('cake', ['#8A5A34', '#4A2314']);
+      if (teaser && window.NM_ART) {
+        teaser.innerHTML = window.NM_ART.photo('kitchen', 'Inside the NM Bakers kitchen', 'cakes');
+        var frame = teaser.closest('.frame');
+        if (frame) frame.classList.add('frame--photo');
+      }
     });
   </script>
 </body>

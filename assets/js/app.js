@@ -224,6 +224,66 @@
   }
 
   /* ------------------------------------------------------------------------
+     Hero picture — one photo, or several that fade between each other
+     ------------------------------------------------------------------------ */
+  var HERO_INTERVAL = 5000;   // milliseconds each picture is shown
+
+  function buildHero(heroCake) {
+    var IMG = window.NM_IMAGES || {};
+    var base = window.NM_IMAGE_BASE || 'assets/images/';
+    var entry = IMG['hero-cake'];
+
+    // accept either a single filename or a list of them
+    var files = (Array.isArray(entry) ? entry : [entry]).filter(Boolean);
+
+    var stage = heroCake.closest('.hero__stage');
+
+    // no photo set: keep the hand-drawn cake
+    if (!files.length) {
+      heroCake.innerHTML = ART.get('hero');
+      if (stage) stage.classList.remove('hero__stage--photo');
+      return;
+    }
+
+    // A photograph is a rectangle; the hero stage is a round plate. This flag
+    // tells the CSS to crop each picture into a circular medallion.
+    if (stage) stage.classList.add('hero__stage--photo');
+
+    heroCake.innerHTML = files.map(function (file, i) {
+      return '<img src="' + base + file + '"' +
+        ' alt="' + esc(CFG.name + ' cakes') + '"' +
+        ' class="hero__slide' + (i === 0 ? ' is-active' : '') + '"' +
+        (i === 0 ? '' : ' loading="lazy"') +
+        ' decoding="async" data-nm-next="">';   // empty chain: hide if missing
+    }).join('');
+
+    if (files.length < 2) return;               // single picture, nothing to cycle
+
+    // Someone who asked for less motion should not get a rotating slideshow.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var slides = $$('.hero__slide', heroCake);
+    var current = 0;
+    var timer = null;
+
+    function step() {
+      slides[current].classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+    }
+
+    function start() { if (!timer) timer = window.setInterval(step, HERO_INTERVAL); }
+    function stop() { window.clearInterval(timer); timer = null; }
+
+    // don't burn cycles while the tab is in the background
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else start();
+    });
+
+    start();
+  }
+
+  /* ------------------------------------------------------------------------
      5. Home page
      ------------------------------------------------------------------------ */
   function renderHome() {
@@ -232,11 +292,7 @@
     var IMG = window.NM_IMAGES || {};
 
     var heroCake = $('#heroCake');
-    if (heroCake) {
-      heroCake.innerHTML = IMG['hero-cake']
-        ? ART.photo('hero-cake', CFG.name + ' signature cake')
-        : ART.get('hero');
-    }
+    if (heroCake) buildHero(heroCake);
 
     var catGrid = $('#categoryGrid');
     if (catGrid) {
